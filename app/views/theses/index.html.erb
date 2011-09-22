@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Year</th>
     <th>Person</th>
     <th></th>
     <th></th>
@@ -12,6 +13,7 @@
 <% @theses.each do |thesis| %>
   <tr>
     <td><%= thesis.title %></td>
+    <td><%= thesis.year %></td>
     <td><%= thesis.person_id %></td>
     <td><%= link_to 'Show', thesis %></td>
     <td><%= link_to 'Edit', edit_thesis_path(thesis) %></td>
