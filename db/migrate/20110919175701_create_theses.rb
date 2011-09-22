@@ -4,6 +4,7 @@ class CreateTheses < ActiveRecord::Migration
       t.string :title
       t.integer :person_id
       t.integer :year
+      t.text :notes
 
       t.timestamps
     end

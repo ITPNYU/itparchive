@@ -3,6 +3,7 @@ class ThesesController < ApplicationController
   # GET /theses.json
   def index
     @theses = Thesis.all
+    @people = Person.all
 
     respond_to do |format|
       format.html # index.html.erb
