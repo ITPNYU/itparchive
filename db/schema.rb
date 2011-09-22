@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20110919175830) do
 
-  create_table "media", :force => true do |t|
+  create_table "documentation", :force => true do |t|
     t.string   "type"
     t.integer  "thesis_id"
     t.datetime "created_at"
