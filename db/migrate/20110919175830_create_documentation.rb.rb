@@ -1,6 +1,6 @@
-class CreateMedia < ActiveRecord::Migration
+class CreateDocumentation < ActiveRecord::Migration
   def change
-    create_table :media do |t|
+    create_table :documentation do |t|
       t.string :type
       t.integer :thesis_id
 
