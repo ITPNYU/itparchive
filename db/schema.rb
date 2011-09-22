@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20110919175830) do
   create_table "theses", :force => true do |t|
     t.string   "title"
     t.integer  "person_id"
+    t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

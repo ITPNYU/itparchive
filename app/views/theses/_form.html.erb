@@ -15,9 +15,14 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+  
   <div class="field">
-    <%= f.label :person_id %><br />
-    <%= f.number_field :person_id %>
+    <%= f.label :year %><br/>
+    <%= f.number_field :year, :min => 1970, :max => Date.today.year %>
+  </div>
+  <div class="field">
+  </div>
+  <div class="field">
   </div>
   <div class="actions">
     <%= f.submit %>
