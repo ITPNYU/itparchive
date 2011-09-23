@@ -5,6 +5,7 @@
     <th>Person</th>
     <th>Title</th>
     <th>Year</th>
+    <th>Notes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= thesis.person.full_name %></td>
     <td><%= thesis.title %></td>
     <td><%= thesis.year %></td>
+    <td><%= thesis.notes %></td>
     <td><%= link_to 'Show', thesis %></td>
     <td><%= link_to 'Edit', edit_thesis_path(thesis) %></td>
     <td><%= link_to 'Destroy', thesis, confirm: 'Are you sure?', method: :delete %></td>

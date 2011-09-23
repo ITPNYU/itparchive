@@ -16,11 +16,11 @@ csv.each do |row|
   if name_split.match(row[0])
     name_match = name_split.match(row[0])
     if name_match.length == 3
-      first_name = name_match[1]
-      last_name = name_match[2]
+      first_name = name_match[1].strip
+      last_name = name_match[2].strip
     else
       first_name = ""
-      last_name = name_match[1]
+      last_name = name_match[1].strip
     end
   else
     first_name = ""
@@ -31,5 +31,6 @@ csv.each do |row|
   author.save
 
   thesis = Thesis.new(:title => row[2], :year => row[1], :person_id => author.id)
+  thesis.notes = row[5] if row[5]
   thesis.save
 end

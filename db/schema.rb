@@ -11,11 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110919175830) do
+ActiveRecord::Schema.define(:version => 20110923170430) do
 
-  create_table "documentation", :force => true do |t|
+  create_table "documentations", :force => true do |t|
     t.string   "type"
+    t.string   "url"
     t.integer  "thesis_id"
+    t.integer  "status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "media", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,10 +36,15 @@ ActiveRecord::Schema.define(:version => 20110919175830) do
     t.datetime "updated_at"
   end
 
+  create_table "statuses", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "theses", :force => true do |t|
     t.string   "title"
     t.integer  "person_id"
     t.integer  "year"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
