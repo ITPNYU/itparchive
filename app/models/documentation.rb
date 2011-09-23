@@ -1,6 +1,10 @@
 class Documentation < ActiveRecord::Base
 
   belongs_to :thesis
-  belongs_to :status
+
+  def condition_word
+    words = { 1 => "Unusable", 2 => "Fragment", 3 => "Good", 4 => "Perfect"}
+    words[condition]
+  end
 
 end

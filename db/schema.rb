@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20110923170430) do
   create_table "documentations", :force => true do |t|
     t.string   "type"
     t.string   "url"
+    t.integer  "condition"
     t.integer  "thesis_id"
     t.integer  "status_id"
     t.datetime "created_at"
@@ -34,10 +35,6 @@ ActiveRecord::Schema.define(:version => 20110923170430) do
     t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "statuses", :force => true do |t|
-    t.string "name"
   end
 
   create_table "theses", :force => true do |t|
