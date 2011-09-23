@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20110923170430) do
   end
 
   create_table "media", :force => true do |t|
-    t.string   "name"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

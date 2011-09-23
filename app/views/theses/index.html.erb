@@ -6,6 +6,7 @@
     <th>Title</th>
     <th>Year</th>
     <th>Notes</th>
+    <th>Article</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= thesis.title %></td>
     <td><%= thesis.year %></td>
     <td><%= thesis.notes %></td>
+    <td><%= thesis.documentation.url if thesis.documentation %></td>
     <td><%= link_to 'Show', thesis %></td>
     <td><%= link_to 'Edit', edit_thesis_path(thesis) %></td>
     <td><%= link_to 'Destroy', thesis, confirm: 'Are you sure?', method: :delete %></td>

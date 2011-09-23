@@ -31,6 +31,13 @@ csv.each do |row|
   author.save
 
   thesis = Thesis.new(:title => row[2], :year => row[1], :person_id => author.id)
+
+  if row[6]
+    paper = Article.new(:url => row[6])
+    paper.save
+  end
+
+  thesis.documentation = paper
   thesis.notes = row[5] if row[5]
   thesis.save
 end
