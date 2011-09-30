@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'csv'
-
 csv = CSV.read('../ThesisProjectDatabase.csv')
+ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
 
 name_split = Regexp.new('(^.*)( [a-zA-Z\-]*$)')
 
@@ -32,12 +32,20 @@ csv.each do |row|
 
   thesis = Thesis.new(:title => row[2], :year => row[1], :person_id => author.id)
 
-  if row[6]
-    paper = Article.new(:url => row[6])
-    paper.save
+  if row[6] # If there is a text document listed.
+    article = Article.new(:url => row[6])
+    filename = '../ThesisTXT/'+row[6]
+    if File.file?(filename)
+      paper = File.open(filename).readlines
+      while paper.class == Array
+        paper = paper.join("\n")
+      end
+      paper = ic.iconv(paper + ' ')[0..-2]
+    end
   end
 
-  thesis.documentation = paper
+  thesis.paper = paper
+  thesis.documentation = article
   thesis.notes = row[5] if row[5]
   thesis.save
 end
