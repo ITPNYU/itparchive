@@ -1,0 +1,20 @@
+@import "reset";
+@import "scaffolds";
+
+*:hover>.meta-links {
+	visibility: visible;
+}
+
+.meta-links {
+	float: right;
+	font-size: 0.9em;
+	visibility: hidden;
+	
+	a.delete {
+		color: rgb(244, 9, 9);
+	}
+}
+
+th {
+	font-weight: bold;
+}
