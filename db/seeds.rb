@@ -8,9 +8,20 @@
 
 require 'csv'
 csv = CSV.read('../ThesisProjectDatabase.csv')
-ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
-
 name_split = Regexp.new('(^.*)( [a-zA-Z\-]*$)')
+
+def txt_to_string(f)
+  ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+  filename = '../ThesisTXT/'+f
+  if File.file?(filename)
+    paper = File.open(filename).readlines
+    while paper.class == Array
+      paper = paper.join("\n")
+    end
+    paper = ic.iconv(paper + ' ')[0..-2]
+  end
+  paper
+end
 
 csv.each do |row|
   if name_split.match(row[0])
@@ -34,18 +45,18 @@ csv.each do |row|
 
   if row[6] # If there is a text document listed.
     article = Article.new(:url => row[6])
-    filename = '../ThesisTXT/'+row[6]
-    if File.file?(filename)
-      paper = File.open(filename).readlines
-      while paper.class == Array
-        paper = paper.join("\n")
-      end
-      paper = ic.iconv(paper + ' ')[0..-2]
+    paper = txt_to_string row[6]
+    if row[7]
+      paper += '\n\n\n\n DOC 2 \n\n\n\n' +txt_to_string row[7]
+      puts "secondary text"
     end
   end
 
   thesis.paper = paper
   thesis.documentation = article
-  thesis.notes = row[5] if row[5]
+  thesis.notes = ''
+  thesis.notes = 'Collaborator: ' + row[3] if row[3]
+  thesis.notes += row[4] if row[4]
+  thesis.notes = [thesis.notes,row[5]].join(' ') if row[5]
   thesis.save
 end
