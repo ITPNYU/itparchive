@@ -1,12 +1,15 @@
 <h1>Listing theses</h1>
 
+<p><%= link_to 'New Thesis', new_thesis_path %></p>
+
 <table>
   <tr>
     <th>Person</th>
     <th>Title</th>
     <th>Year</th>
     <th>Notes</th>
-    <th>Article</th>
+    <th>Text</th>
+    <th>PDF</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,17 +18,17 @@
 <% @theses.each do |thesis| %>
   <tr>
     <td><%= thesis.person.full_name %></td>
-    <td><%= thesis.title %></td>
+    <td>
+      <%= link_to thesis.title, thesis %>
+      <span class="meta-links">
+        <%= link_to 'edit', edit_thesis_path(thesis) %>
+        <%= link_to 'delete', thesis, confirm: 'Are you sure?', method: :delete, :class => "delete" %>
+      </span>
+    </td>
     <td><%= thesis.year %></td>
     <td><%= thesis.notes %></td>
+    <td><%= thesis.paper[0..100] if thesis.paper %></td>
     <td><%= thesis.documentation.url if thesis.documentation %></td>
-    <td><%= link_to 'Show', thesis %></td>
-    <td><%= link_to 'Edit', edit_thesis_path(thesis) %></td>
-    <td><%= link_to 'Destroy', thesis, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Thesis', new_thesis_path %>

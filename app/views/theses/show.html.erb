@@ -13,7 +13,11 @@
 <p>
   <b>Year:</b>
   <%= @thesis.year %>
+</p>
 
+<div>
+  <%= @thesis.paper %>
+</div>
 
 <%= link_to 'Edit', edit_thesis_path(@thesis) %> |
 <%= link_to 'Back', theses_path %>
