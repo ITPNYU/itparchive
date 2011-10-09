@@ -2,18 +2,13 @@
 
 <p><%= link_to 'New Thesis', new_thesis_path %></p>
 
-<table>
-  <tr>
+<table id="theses-table">
+  <thead>
     <th>Person</th>
     <th>Title</th>
     <th>Year</th>
     <th>Notes</th>
-    <th>Text</th>
-    <th>PDF</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  </thead>
 
 <% @theses.each do |thesis| %>
   <tr>
@@ -27,8 +22,6 @@
     </td>
     <td><%= thesis.year %></td>
     <td><%= thesis.notes %></td>
-    <td><%= thesis.paper[0..100] if thesis.paper %></td>
-    <td><%= thesis.documentation.url if thesis.documentation %></td>
   </tr>
 <% end %>
 </table>
