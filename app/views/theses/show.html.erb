@@ -7,7 +7,7 @@
 
 <p>
   <b>Person:</b>
-  <%= @thesis.person_id %>
+  <%= @thesis.person.full_name %>
 </p>
 
 <p>
@@ -16,7 +16,13 @@
 </p>
 
 <div>
-  <%= @thesis.paper %>
+  <% if @thesis.documentation %>
+    <% @thesis.documentation.each do |document|%>
+      <p>URL: <%= document.aws_url %></p>
+      <p>Title: <%= document.title %></p>
+      <div><%= document.paper %></div>
+    <% end %>
+  <% end %>
 </div>
 
 <%= link_to 'Edit', edit_thesis_path(@thesis) %> |
