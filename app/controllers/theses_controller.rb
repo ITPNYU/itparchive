@@ -41,8 +41,10 @@ class ThesesController < ApplicationController
   # POST /theses
   # POST /theses.json
   def create
+    params[:documentation][:paper] = params[:documentation][:paper].tempfile.readline
     @thesis = Thesis.new(params[:thesis]) #{:attribute => "value", :attribute2 => 1  }
     @thesis.documentations.new(params[:documentation]) # params = {:thesis => {...}, :documentation => {:media => {...}}}
+    @thesis.person = Person.new(params[:person])
 
     respond_to do |format|
       if @thesis.save

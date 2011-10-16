@@ -7,8 +7,7 @@
     <th>Person</th>
     <th>Title</th>
     <th>Year</th>
-    <th>Notes</th>
-    <th>URL</th>
+    <th>PDF</th>
     <th>Text?</th>
   </thead>
 
@@ -27,9 +26,9 @@
       </span>
     </td>
     <td><%= thesis.year %></td>
-    <td><%= thesis.notes %></td>
     <td>
       <% thesis.documentations.each do |document| %>
+        <%= document.link_to_pdf('download') if document.media_file_name %>
       <% end %>
     </td>
     <td>
