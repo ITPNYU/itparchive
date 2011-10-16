@@ -7,7 +7,7 @@
 
 <p>
   <b>Person:</b>
-  <%= @thesis.person.full_name %>
+  <%= @thesis.person.full_name if @thesis.person %>
 </p>
 
 <p>
@@ -16,10 +16,9 @@
 </p>
 
 <div>
-  <% if @thesis.documentation %>
-    <% @thesis.documentation.each do |document|%>
-      <p>URL: <%= document.aws_url %></p>
-      <p>Title: <%= document.title %></p>
+  <% if @thesis.documentations %>
+    <% @thesis.documentations.each do |document|%>
+      <p>PDF: <%= document.media_file_name %></p>
       <div><%= document.paper %></div>
     <% end %>
   <% end %>

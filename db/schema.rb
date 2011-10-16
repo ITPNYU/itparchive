@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(:version => 20110923170348) do
     t.integer  "thesis_id"
     t.string   "title"
     t.text     "paper"
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

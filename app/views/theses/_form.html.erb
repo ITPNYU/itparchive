@@ -1,4 +1,4 @@
-<%= form_for(@thesis) do |f| %>
+<%= form_for(@thesis, :html => {:multipart => true}) do |f| %>
   <% if @thesis.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h2>
@@ -12,18 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <label>Title:</label>
+    <input type="text" name="thesis[title]" id="thesis_title" size="30"/>
   </div>
-  
+
   <div class="field">
-    <%= f.label :year %><br/>
-    <%= f.number_field :year, :min => 1970, :max => Date.today.year %>
+    <label>Year:</label>
+    <input id="thesis_year" type="number" name="thesis[year]" size="30", max="<%= Date.today.year %>" min="1970">
   </div>
+
   <div class="field">
+    <label>PDF: </label>
+    <input id="documentation_media" type="file" name="documentation[media]" />
+    <input type="hidden" name="documentation[type]" value="article" />
   </div>
+
   <div class="field">
+    <label>Text File:</label>
+    <input id="documentation_paper" type="file" name="documentation[paper]">
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
