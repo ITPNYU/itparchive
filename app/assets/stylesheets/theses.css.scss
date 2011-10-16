@@ -7,10 +7,40 @@
 	tr.odd {
 		background-color: #efefef;
 	}
+
+	tbody tr:hover {
+		background-color: rgba(244,244,173,0.7);
+		-webkit-transition: all 0.3s ease-in-out;
+	}
 }
 
 /* form */
 
 form {
-	width: #{$column * 12};
+	width: 100%;
+
+	section {
+		border-bottom: 1px solid black;
+		margin: 1em 0;
+		position: relative;
+		width: 100%;
+
+		h4 {
+			margin-top: 0;
+			float: left;
+			width: #{$column*4};
+		}
+
+		fieldset {
+			position: relative;
+			top: 0;
+			margin-left: #{$column*4};
+		}
+	}
+
+	textarea {
+		clear: both;
+		display: block;
+	}
+
 }

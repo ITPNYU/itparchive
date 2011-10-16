@@ -4,6 +4,10 @@ $font-size: 13;
 $em: $font-size * 1.2;
 $golden: 1.618;
 
+@mixin column-padding($side) {
+	padding-#{$side}: #{($line/2)/$em}em;
+}
+
 @import "reset";
 /*@import "ggs";*/
 
@@ -81,6 +85,8 @@ th {
 
 #wrapper {
 	margin: 0 $column;
+	@include column-padding(right);
+	@include column-padding(left);
 }
 
 header h1 {
