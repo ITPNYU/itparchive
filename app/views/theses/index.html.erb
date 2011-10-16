@@ -14,7 +14,7 @@
 
 <% @theses.each do |thesis| %>
   <tr>
-    <td><%= thesis.person.full_name %></td>
+    <td><%= thesis.person.full_name if thesis.person %></td>
     <td>
       <% if thesis.title %>
       <%= link_to thesis.title, thesis %>
@@ -29,12 +29,11 @@
     <td><%= thesis.year %></td>
     <td><%= thesis.notes %></td>
     <td>
-      <% thesis.documentation.each do |document| %>
-        <%= document.aws_url %> 
+      <% thesis.documentations.each do |document| %>
       <% end %>
     </td>
     <td>
-      <% thesis.documentation.each do |document| %>
+      <% thesis.documentations.each do |document| %>
         <%= document.paper ? "Yes" : "NO" %>
       <% end %>
     </td>

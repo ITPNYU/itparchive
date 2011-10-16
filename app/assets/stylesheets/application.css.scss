@@ -1,18 +1,74 @@
-@import "reset";
-@import "scaffolds";
+$line: 24;
+$column: 100% / 18;
+$font-size: 13;
+$em: $font-size * 1.2;
+$golden: 1.618;
 
-*:hover>.meta-links {
-	visibility: visible;
+@import "reset";
+/*@import "ggs";*/
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.6em;
 }
 
-.meta-links {
-	float: right;
-	font-size: 0.9em;
-	visibility: hidden;
-	
-	a.delete {
-		color: rgb(244, 9, 9);
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
 	}
+  &:hover {
+    color: #fff;
+    background-color: #000;
+	}
+}
+
+
+h1 {
+	font-size: 4.236em;
+	line-height: 1.8em;
+	margin: 0.25em 0 0.75em;
+}
+
+h2 {
+	font-size: 3.526em;
+	line-height: 1.7em;
+	margin: 0.25em 0 0.75em;
+}
+
+h3 {
+	font-size: 2.618em;
+	line-height: 1.6em;
+	margin: 0.35em;
+}
+
+h4 {
+	font-size: 2.179em;
+	line-height: 1.2em;
+	margin: 0.25em 0;
+}
+
+h5 {
+	font-size: 1.618em;
+	line-height: 1em;
+}
+
+h6 {
+	font-size: 1.347em;
+	line-height: 1em;
 }
 
 em {
@@ -23,4 +79,13 @@ th {
 	font-weight: bold;
 }
 
+#wrapper {
+	margin: 0 $column;
+}
+
+header h1 {
+	font-size: #{$font-size}px;
+}
+
+@import "scaffolds";
 @import "theses";

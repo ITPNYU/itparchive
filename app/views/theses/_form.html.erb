@@ -1,7 +1,7 @@
 <%= form_for(@thesis, :html => {:multipart => true}) do |f| %>
   <% if @thesis.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h2>
+      <h4><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h4>
 
       <ul>
       <% @thesis.errors.full_messages.each do |msg| %>
@@ -18,9 +18,10 @@
 
   <div class="field">
     <label>Year:</label>
-    <input id="thesis_year" type="number" name="thesis[year]" size="30", max="<%= Date.today.year %>" min="1970">
+    <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970">
   </div>
 
+  <h4>Paper:</h4>
   <div class="field">
     <label>PDF: </label>
     <input id="documentation_media" type="file" name="documentation[media]" />
@@ -30,6 +31,22 @@
   <div class="field">
     <label>Text File:</label>
     <input id="documentation_paper" type="file" name="documentation[paper]">
+  </div>
+
+  <h4>Person</h4>
+  <div class="field">
+    <label>First Name:</label>
+    <input type="text" name="person[first]"/>
+  </div>
+
+  <div class="field">
+    <label>Last Name:</label>
+    <input type="text" name="person[last]">
+  </div>
+
+  <div>
+    <label>Graduation Year:</label>
+    <input type="number" name="person[year]" size="30" min="1970" max="<%= Date.today.year %>">
   </div>
 
   <div class="actions">

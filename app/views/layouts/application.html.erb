@@ -7,8 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="wrapper">
+    <header>
+      <h1><a href="/">ITP Archive</a></h1>
+    </header>
+    <%= yield %>
+  </div>
 </body>
 </html>

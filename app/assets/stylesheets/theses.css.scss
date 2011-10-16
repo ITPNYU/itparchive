@@ -1,4 +1,5 @@
 #theses-table {
+	width: 100%;
 	td {
 		padding: 0.4em;
 	}
@@ -6,4 +7,10 @@
 	tr.odd {
 		background-color: #efefef;
 	}
+}
+
+/* form */
+
+form {
+	width: #{$column * 12};
 }
