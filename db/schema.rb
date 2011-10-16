@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(:version => 20110923170348) do
 
   create_table "documentations", :force => true do |t|
     t.string   "type"
-    t.string   "aws_url"
     t.integer  "condition"
     t.integer  "thesis_id"
     t.string   "title"
@@ -32,13 +31,13 @@ ActiveRecord::Schema.define(:version => 20110923170348) do
     t.string   "first"
     t.string   "last"
     t.integer  "year"
+    t.integer  "thesis_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "theses", :force => true do |t|
     t.string   "title"
-    t.integer  "person_id"
     t.integer  "year"
     t.text     "notes"
     t.datetime "created_at"

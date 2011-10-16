@@ -4,6 +4,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :first
       t.string :last
       t.integer :year
+      t.integer :thesis_id
 
       t.timestamps
     end

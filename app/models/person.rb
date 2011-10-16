@@ -1,8 +1,17 @@
 class Person < ActiveRecord::Base
 
-  has_one :thesis
+  belongs_to :thesis
   
   def full_name
-    first + " " + last
+    if first
+      if last
+        full = first + " " + last
+      else
+        full = first
+      end
+    elsif last
+      full = last
+    end
+    full
   end
 end
