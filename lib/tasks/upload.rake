@@ -10,7 +10,7 @@ namespace :db do
       ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
       filename = '../ThesisTXT/'+f
       if File.file?(filename)
-        puts "Opened #{filename}"
+        puts "Text file #{filename}"
         paper = File.open(filename).readlines
         while paper.class == Array
           paper = paper.join("\n")
@@ -26,7 +26,7 @@ namespace :db do
       filename = pdf.split("/").last.split(".")
 
       # assume that if the year is good and in the right spot the PDF name is good.
-      if filename[2].to_i >= 1960
+      if filename[2].to_i >= 1970
 
         # loop through csv for a match
         match = []
@@ -36,32 +36,59 @@ namespace :db do
 
         # We have match, make a Thesis.
         if match.length > 0
-          author = Person.new(:first => match[1], :last => match[2])
-          author.save
 
           thesis = Thesis.new({
             :title => match[4],
             :year => match[3],
             :notes => [match[6],match[7]].join(" "),
-            :person_id => author.id
           })
-          thesis.save
+
+          thesis.person = Person.new(:first => match[1], :last => match[2])
+
+          if(match[9])
+            paper_as_text = txt_to_string(match[9])
+          else
+            paper_as_text = nil
+          end
 
           # Generate Article model
-          unique_id = Time.now.to_i.to_s+rand(99999).to_s
-          article = Article.new({
-            :title => filename,
-            :aws_url => "article/"+unique_id+".pdf",
-            :thesis_id => thesis.id
+          thesis.documentations << Article.new({
+            :media => File.open(pdf),
+            :thesis_id => thesis.id,
+            :paper => paper_as_text
           })
-          puts article.save
 
-          if match[9] # If there is a text document listed.
-            article.paper = txt_to_string match[9]
-            article.save
+          if thesis.save
+            puts ""
+            puts "Save Successful"
+            puts "#{thesis.title} (#{thesis.year})"
+            puts "  #{thesis.person.full_name}" if thesis.person
+            puts "  #{thesis.documentations.last.media.path}" if thesis.documentations
+            puts ""
+          else
+            puts ""
+            puts "*****ERROR*****"
+            puts "#{pdf} not saved"
+            puts ""
           end
+
         # No match, let's just upload the pdf
         else
+          paper = Article.new({
+            :media => File.open(pdf)
+          })
+          
+          if paper.save
+            puts ""
+            puts "Saved PDF only"
+            puts "#{paper.media.path}"
+            puts ""
+          else
+            puts ""
+            puts "*****ERROR*****"
+            puts "#{pdf} not saved"
+          end
+          
         end
       end
     end
