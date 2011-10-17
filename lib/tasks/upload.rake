@@ -88,9 +88,19 @@ namespace :db do
             puts "*****ERROR*****"
             puts "#{pdf} not saved"
           end
-          
         end
+      else
+        error_log ||= []
+        error_log << pdf
       end
+    end
+
+    if f = File.open("#{Rails.root}/log/upload.log")
+      f.write(Time.now+"\n")
+      error_log.each do |e|
+        f.write(e+"\n")
+      end
+      f.close
     end
 
   end
