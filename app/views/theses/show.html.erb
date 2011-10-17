@@ -19,7 +19,7 @@
   <% if @thesis.documentations %>
     <% @thesis.documentations.each do |document|%>
       <p>PDF: <%= document.link_to_pdf(document.media_file_name)%></p>
-      <div><%= document.paper %></div>
+      <div><%= markdown document.paper if document.paper %></div>
     <% end %>
   <% end %>
 </div>
