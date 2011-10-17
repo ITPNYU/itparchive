@@ -10,8 +10,17 @@
   <div id="wrapper">
     <header>
       <h1><a href="/">ITP Archive</a></h1>
+      
+      <nav>
+        <ul>
+          <li><%= link_to "Theses", theses_path %></li>
+          <li><%= link_to "Documentations", documentations_path %></li>
+        </ul>
+      </nav>
     </header>
-    <%= yield %>
+    <div id="content">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>
