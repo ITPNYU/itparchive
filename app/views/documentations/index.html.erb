@@ -1,0 +1,25 @@
+<h1>Documentation</h1>
+<table id="documentations-table">
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Text</th>
+      <th>Associated Thesis</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @documentations.each do |documentation| %>
+    <tr>
+      <td><%= documentation.media.path.split("/").last %></td>
+      <td>
+        <%= link_to "show", documentation_url(documentation.id) if documentation.paper %>
+      </td>
+      <td>
+        <% if documentation.thesis_id %>
+          <%= link_to documentation.thesis.title, thesis_url(documentation.thesis_id) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

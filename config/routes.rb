@@ -1,9 +1,9 @@
 Itparchive::Application.routes.draw do
   resources :theses do
-    resources :people, :media
+    resources :people
   end
 
-  resources :people, :media
+  resources :people, :documentations
 
   root :to => 'theses#index'
 
