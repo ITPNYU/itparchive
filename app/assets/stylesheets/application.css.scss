@@ -4,6 +4,11 @@ $font-size: 13;
 $em: $font-size * 1.2;
 $golden: 1.618;
 
+/* COLORS */
+$green: rgb(38,114,11);
+$red: rgb(205,49,13);
+$orange: rgb(205,100,13);
+
 @mixin column-padding($side) {
 	padding-#{$side}: #{($line/2)/$em}em;
 }
@@ -12,11 +17,15 @@ $golden: 1.618;
 /*@import "ggs";*/
 
 body {
-  background-color: #fff;
+  background-color: rgb(85,98,112);
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 1.6em;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: 0;
 }
 
 p, ol, ul, td {
@@ -30,13 +39,10 @@ pre {
 }
 
 a {
-  color: #000;
-  &:visited {
-    color: #666;
-	}
+  color: rgb(17,114,228);
+
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: rgb(8,52,139);
 	}
 }
 
@@ -83,14 +89,30 @@ th {
 	font-weight: bold;
 }
 
-#wrapper {
+header,
+#content {
 	margin: 0 $column;
+	padding: 0;
 	@include column-padding(right);
 	@include column-padding(left);
 }
 
-header h1 {
-	font-size: #{$font-size}px;
+header {
+	
+	h1 {
+		font-size: #{$font-size}px;
+	}
+	
+	nav {
+		ul li{
+			display: inline;
+		}
+	}
+}
+
+#content {
+	background-color: #ffffff;
+	-webkit-box-shadow: 0 0 8px rgba(51,51,51,0.6);
 }
 
 @import "scaffolds";

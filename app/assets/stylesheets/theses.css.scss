@@ -1,4 +1,5 @@
-#theses-table {
+#theses-table,
+#documentations-table {
 	width: 100%;
 	td {
 		padding: 0.4em;
@@ -9,9 +10,13 @@
 	}
 
 	tbody tr:hover {
-		background-color: rgba(244,244,173,0.7);
+		background-color: rgba(243,216,40,0.7);
 		-webkit-transition: all 0.3s ease-in-out;
 	}
+}
+
+#theses-table .meta-links {
+	float: right;
 }
 
 /* form */

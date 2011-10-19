@@ -3,11 +3,11 @@ div {
     margin-bottom: 10px; } }
 
 #notice {
-  color: green; }
+  color: $green; }
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: $red;
   display: table; }
 
 #error_explanation {
@@ -35,11 +35,15 @@ div {
 }
 
 .meta-links {
-	float: right;
+	color: $orange;
 	font-size: 0.9em;
 	visibility: hidden;
 
+	a {
+		color: $orange;
+	}
+
 	a.delete {
-		color: rgb(244, 9, 9);
+		color: $red;
 	}
 }
