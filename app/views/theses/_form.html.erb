@@ -16,17 +16,17 @@
     <fieldset>
       <div class="field">
         <label>Title:</label>
-        <input type="text" name="thesis[title]" id="thesis_title" size="30"/>
+        <input type="text" name="thesis[title]" id="thesis_title" size="30" <%= edit_value(@thesis,"title") %>/>
       </div>
 
       <div class="field">
         <label>Year:</label>
-        <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970">
+        <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" <%= edit_value(@thesis,'year') %>>
       </div>
     
       <div class="field">
         <label>Curatorial Notes:</label>
-        <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10"></textarea>
+        <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10" <%= edit_value(@thesis,'notes') %>></textarea>
       </div>
     </fieldset>
   </section>
@@ -35,12 +35,12 @@
     <h4>Article:</h4>
     <fieldset>
       <div class="field">
-        <label>PDF: </label>
+        <label>PDF: <%= @thesis.documentations.first.media.path if @thesis.documentations %></label>
         <input id="documentation_media" type="file" name="documentation[media]" />
       </div>
 
       <div class="field">
-        <label>Text File:</label>
+        <label>Text File: <%= "\"#{@thesis.documentations.first.paper[0..20]}...\"" if @thesis.documentations %></label>
         <input id="documentation_paper" type="file" name="documentation[paper]">
       </div>
     </fieldset>
@@ -51,17 +51,17 @@
     <fieldset>
       <div class="field">
         <label>First Name:</label>
-        <input type="text" name="person[first]"/>
+        <input type="text" name="person[first]" <%= edit_value(@thesis.person,'first') %>/>
       </div>
 
       <div class="field">
         <label>Last Name:</label>
-        <input type="text" name="person[last]">
+        <input type="text" name="person[last]" <%= edit_value(@thesis.person,'last') %>>
       </div>
 
       <div>
         <label>Graduation Year:</label>
-        <input type="number" name="person[year]" size="30" min="1970" max="<%= Date.today.year %>">
+        <input type="number" name="person[year]" size="30" min="1970" max="<%= Date.today.year %>" <%= edit_value(@thesis.person,'year') %>>
       </div>
     </fieldset>
   </section>
