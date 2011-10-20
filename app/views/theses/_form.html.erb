@@ -21,7 +21,7 @@
 
       <div class="field">
         <label>Year:</label>
-        <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" <%= edit_value(@thesis,'year') %>>
+        <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" <%= edit_value(@thesis,'year') %>/>
       </div>
     
       <div class="field">
@@ -35,13 +35,25 @@
     <h4>Article:</h4>
     <fieldset>
       <div class="field">
-        <label>PDF: <%= @thesis.documentations.first.media.path if @thesis.documentations %></label>
-        <input id="documentation_media" type="file" name="documentation[media]" />
+        <h5><label>PDF:</label></h5>
+        <ul>
+        <% @thesis.documentations.each do |d| %>
+          <li><%= d.media.path %></li>
+        <% end %>
+        </ul>
+        <p>Upload PDF: <input id="documentation_media" type="file" name="documentation[media]" /></p>
       </div>
 
+     
+
       <div class="field">
-        <label>Text File: <%= "\"#{@thesis.documentations.first.paper[0..20]}...\"" if @thesis.documentations %></label>
-        <input id="documentation_paper" type="file" name="documentation[paper]">
+        <h5><label>Text File:</label></h5>
+        <ul>
+          <% @thesis.documentations.each do |d| %>
+            <p>"<%= d.paper[0..60] %>..."</p>
+          <% end %>
+        </ul>
+        <p>Upload Text File: <input id="documentation_paper" type="file" name="documentation[paper]"></p>
       </div>
     </fieldset>
   </section>

@@ -4,20 +4,16 @@
     <tr>
       <th>Filename</th>
       <th>Text</th>
-      <th>Associated Thesis</th>
     </tr>
   </thead>
   <tbody>
   <% @documentations.each do |documentation| %>
     <tr>
-      <td><%= documentation.media.path.split("/").last %></td>
       <td>
-        <%= link_to "show", documentation_url(documentation.id) if documentation.paper %>
+        <%= documentation.media.path.split("/").last %>
       </td>
       <td>
-        <% if documentation.thesis_id %>
-          <%= link_to documentation.thesis.title, thesis_url(documentation.thesis_id) %>
-        <% end %>
+        <%= link_to "show", documentation_url(documentation.id) if documentation.paper %>
       </td>
     </tr>
   <% end %>
