@@ -5,6 +5,33 @@
 		padding: 0.4em;
 	}
 
+	th {
+		padding: 0.25em 1em;
+		background-position: center right;
+		background-repeat: no-repeat;
+		border-bottom: 1px solid rgba(128,128,128,0.5);
+		min-width: 6em;
+
+		&:hover {
+			color: $orange;
+			cursor: pointer;
+		}
+
+		&.sorting_asc {
+			background-image: url('/images/sort_asc.png');
+		}
+
+		&.sorting_desc {
+			background-image: url('/images/sort_desc.png');
+		}
+
+		&.sorting {
+			background-image: url('/images/sort_both.png');
+		}
+	}
+
+
+
 	tr.odd {
 		background-color: #efefef;
 	}
