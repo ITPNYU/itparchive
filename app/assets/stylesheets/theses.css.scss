@@ -9,7 +9,7 @@
 		padding: 0.25em 1em;
 		background-position: center right;
 		background-repeat: no-repeat;
-		border-bottom: 1px solid rgba(128,128,128,0.5);
+		border-bottom: 1px solid $slate;
 		min-width: 6em;
 
 		&:hover {
@@ -30,8 +30,6 @@
 		}
 	}
 
-
-
 	tr.odd {
 		background-color: #efefef;
 	}
@@ -40,6 +38,17 @@
 		background-color: rgba(243,216,40,0.7);
 		-webkit-transition: all 0.3s ease-in-out;
 	}
+}
+
+.dataTables_wrapper {
+	position: relative;
+}
+.dataTables_filter {
+/*	float: right;*/
+	height: 2em;
+	top: -2em;
+	right: 0;
+	position: absolute;
 }
 
 #theses-table .meta-links {

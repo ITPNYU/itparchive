@@ -5,27 +5,38 @@ $em: $font-size * 1.2;
 $golden: 1.618;
 
 /* COLORS */
+$white: rgb(255,255,255);
 $green: rgb(38,114,11);
 $red: rgb(205,49,13);
 $orange: rgb(205,100,13);
+$base-color: rgb(248,250,252);
+$slate: rgb(206,212,229);
 
 @mixin column-padding($side) {
 	padding-#{$side}: #{($line/2)/$em}em;
+}
+@mixin header-font {
+	font-family: "Quicksand", sans-serif;
 }
 
 @import "reset";
 /*@import "ggs";*/
 
+html {
+	margin: 0;
+}
+
 body {
-  background-color: rgb(85,98,112);
+  background-color: $base-color;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 1.6em;
 	margin: 0;
 	padding: 0;
-	position: relative;
+	position: absolute;
 	top: 0;
+	width: 100%;
 }
 
 p, ol, ul, td {
@@ -46,9 +57,12 @@ a {
 	}
 }
 
+h1,h2,h3,h4,h5,h6 {
+	@include header-font;
+}
 
 h1 {
-	font-size: 4.236em;
+	font-size: #{$font-size*$golden*2}px;
 	line-height: 1.8em;
 	margin: 0.25em 0 0.75em;
 }
@@ -89,18 +103,28 @@ th {
 	font-weight: bold;
 }
 
-header,
-#content {
-	margin: 0 $column;
+#wrapper {
+	margin: 0;
 	padding: 0;
-	@include column-padding(right);
-	@include column-padding(left);
+}
+
+#content {
+	padding: 1em $column;
+	position: relative;
+	width: #{$column*16};
 }
 
 header {
-	
+	background-color: $base-color;
+	left: 0;
+	margin: 0;
+	padding: 1em $column;
+	position: relative;
+	top: 0;
+	width: #{$column*16};
+
 	h1 {
-		font-size: #{$font-size}px;
+		font-size: #{$font-size*$golden}px;
 	}
 	
 	nav {
@@ -111,7 +135,7 @@ header {
 }
 
 #content {
-	background-color: #ffffff;
+	background-color: $white;
 	-webkit-box-shadow: 0 0 8px rgba(51,51,51,0.6);
 }
 
