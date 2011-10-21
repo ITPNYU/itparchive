@@ -9,8 +9,51 @@
   <tbody>
   <% @documentations.each do |documentation| %>
     <tr>
-      <td>
+      <td class="orphaned-documentation">
         <%= documentation.media.path.split("/").last %>
+        <div class="thesis-from-document-form" id="form-<%= documentation.id %>">
+          <form>
+            <fieldset>
+              <h4>Thesis:</h4>
+
+              <div class="field">
+                <label>Title:</label>
+                <input type="text" name="thesis[title]" id="thesis_title" size="30" />
+              </div>
+
+              <div class="field">
+                <label>Year:</label>
+                <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" />
+              </div>
+
+              <div class="field">
+                <label>Curatorial Notes:</label>
+                <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10" ></textarea>
+              </div>
+              <input type="hidden" name="documentation" value="<%= documentation.id %>">
+            </fieldset>
+
+            <fieldset>
+              <h4>Author:</h4>
+
+              <div class="field">
+                <label>First Name:</label>
+                <input type="text" name="person[first]"/>
+              </div>
+
+              <div class="field">
+                <label>Last Name:</label>
+                <input type="text" name="person[last]">
+              </div>
+
+              <div>
+                <label>Graduation Year:</label>
+                <input type="number" name="person[year]" size="30" min="1970" max="<%= Date.today.year %>">
+              </div>
+            </fieldset>
+            <input type="submit"/>
+          </form>
+        </div>
       </td>
       <td>
         <%= link_to "show", documentation_url(documentation.id) if documentation.paper %>

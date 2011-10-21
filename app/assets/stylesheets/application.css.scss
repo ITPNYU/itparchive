@@ -126,7 +126,7 @@ header {
 	h1 {
 		font-size: #{$font-size*$golden}px;
 	}
-	
+
 	nav {
 		ul li{
 			display: inline;
@@ -141,3 +141,12 @@ header {
 
 @import "scaffolds";
 @import "theses";
+
+.thesis-from-document-form {
+	display: none;
+
+	fieldset {
+		float: left;
+		width: 50%;
+	}
+}
