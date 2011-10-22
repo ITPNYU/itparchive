@@ -1,6 +1,6 @@
 $(function(){
-  $('.orphaned-documentation').click(function(){
-    $(this).find('.add-thesis-form').fadeToggle();
+  $('.file-name').click(function(){
+    $(this).closest('td').find('.add-thesis-form').fadeToggle();
   });
   
   $('.add-thesis-form .submit').click(function(){
