@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>Filename</th>
-      <th>Text</th>
+      <th>Media Integrity</th>
     </tr>
   </thead>
   <tbody>
@@ -56,7 +56,7 @@
         </div>
       </td>
       <td>
-        <%= link_to "show", documentation_url(documentation.id) if documentation.paper %>
+        <%= documentation.integrity_word %>
       </td>
     </tr>
   <% end %>
