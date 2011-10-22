@@ -10,7 +10,7 @@
   <% @documentations.each do |documentation| %>
     <tr>
       <td class="orphaned-documentation">
-        <%= documentation.media.path.split("/").last %>
+        <span class="file-name"><%= documentation.media.path.split("/").last %></span>
         <div class="add-thesis-form" id="form-<%= documentation.id %>">
           <form>
             <fieldset>
