@@ -10,6 +10,7 @@ $(function(){
       form = {
         id : $('input[name="documentation"]').val(),
         integrity : $('select[name="integrity"]').val(),
+        flag : $('input[name="flag"]').val(),
         thesis : {
           title : $('input[name="thesis[title]"]').val(),
           year : $('input[name="thesis[year]"]').val(),
