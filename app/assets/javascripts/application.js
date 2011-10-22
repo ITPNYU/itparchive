@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function(){
+$(function(){
   $('#theses-table, #documentations-table').dataTable({
     "bPaginate": false
   });

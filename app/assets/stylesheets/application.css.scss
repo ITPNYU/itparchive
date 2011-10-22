@@ -10,7 +10,9 @@ $green: rgb(38,114,11);
 $red: rgb(205,49,13);
 $orange: rgb(205,100,13);
 $base-color: rgb(248,250,252);
+$color-2: rgb(198,199,201);
 $slate: rgb(206,212,229);
+$sky: rgb(173,213,252);
 
 @mixin column-padding($side) {
 	padding-#{$side}: #{($line/2)/$em}em;
@@ -126,7 +128,7 @@ header {
 	h1 {
 		font-size: #{$font-size*$golden}px;
 	}
-	
+
 	nav {
 		ul li{
 			display: inline;
