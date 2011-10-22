@@ -18,7 +18,8 @@ class DocumentationsController < ApplicationController
 
   def update
     # raise params.inspect
-    @documentation = Documentation.find(params["id"])
+    @documentation = Documentation.find(params[:id])
+    @documentation.integrity = params[:integrity]
     @documentation.thesis = Thesis.new(params[:thesis])
     @documentation.thesis.person = Person.new(params[:person])
 
