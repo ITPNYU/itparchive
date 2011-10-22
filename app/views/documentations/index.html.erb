@@ -11,7 +11,7 @@
     <tr>
       <td class="orphaned-documentation">
         <%= documentation.media.path.split("/").last %>
-        <div class="thesis-from-document-form" id="form-<%= documentation.id %>">
+        <div class="add-thesis-form" id="form-<%= documentation.id %>">
           <form>
             <fieldset>
               <h4>Thesis:</h4>
@@ -51,7 +51,7 @@
                 <input type="number" name="person[year]" size="30" min="1970" max="<%= Date.today.year %>">
               </div>
             </fieldset>
-            <input type="submit"/>
+            <button class="submit">Create Thesis</button>
           </form>
         </div>
       </td>

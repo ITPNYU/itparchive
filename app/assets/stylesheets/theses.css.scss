@@ -30,6 +30,8 @@
 		}
 	}
 
+/*	tr:nth-child(2n+1) */
+
 	tr.odd {
 		background-color: #efefef;
 	}
@@ -83,5 +85,20 @@ form {
 		clear: both;
 		display: block;
 	}
+}
 
+.add-thesis-form {
+	background-color: $base-color;
+	border: 1px solid $slate;
+	display: none;
+	clear: both;
+	overflow: auto;
+	padding: 1em;
+	position: relative;
+
+	fieldset {
+		float: left;
+		padding-right: 1%;
+		width: 49%;
+	}
 }
