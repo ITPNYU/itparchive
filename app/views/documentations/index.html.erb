@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Filename</th>
-      <th>Text</th>
+      <th>Media Integrity</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +15,14 @@
         <div class="add-thesis-form" id="form-<%= documentation.id %>">
           <form>
             <fieldset>
+              <h4>Documentation Integrity</h4>
+              <select name="integrity">
+                <option value="0">-</option>
+                <option value="1">Unacceptable</option>
+                <option value="2">Fragment</option>
+                <option value="3">Great</option>
+              </select>
+              
               <h4>Thesis:</h4>
 
               <div class="field">
@@ -57,7 +65,7 @@
         </div>
       </td>
       <td>
-        <%= link_to "show", documentation_url(documentation.id) if documentation.paper %>
+        <%= documentation.integrity_word %>
       </td>
     </tr>
   <% end %>
