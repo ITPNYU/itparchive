@@ -12,7 +12,6 @@ class Documentation < ActiveRecord::Base
   
   def default_values
     self.integrity = 0 unless self.integrity
-    self.flag = false
   end
 
   def condition_word

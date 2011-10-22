@@ -2,24 +2,24 @@ $(function(){
   $('.file-name').click(function(){
     $(this).closest('td').find('.add-thesis-form').fadeToggle();
   });
-  
+
   $('.add-thesis-form .submit').click(function(){
-    if($('input[name="thesis[title]"]').val() != "" && $('input[name="thesis[year]"]').val() != "")
+    $theform = $(this).closest('.add-thesis-form');
+    if($theform.find('input[name="thesis[title]"]').val() != "" && $theform.find('input[name="thesis[year]"]').val() != "")
     {
-      $theform = $(this).closest('.add-thesis-form');
       form = {
-        id : $('input[name="documentation"]').val(),
-        integrity : $('select[name="integrity"]').val(),
-        flag : $('input[name="flag"]').val(),
+        id : $theform.find('input[name="documentation"]').val(),
+        integrity : $theform.find('select[name="integrity"]').val(),
+        flag : $theform.find('select[name="flag"]').val(),
         thesis : {
-          title : $('input[name="thesis[title]"]').val(),
-          year : $('input[name="thesis[year]"]').val(),
-          notes : $('input[name="thesis[notes]"]').val(),
+          title : $theform.find('input[name="thesis[title]"]').val(),
+          year : $theform.find('input[name="thesis[year]"]').val(),
+          notes : $theform.find('input[name="thesis[notes]"]').val(),
         },
         person : {
-          first : $('input[name="person[first]"]').val(),
-          last : $('input[name="person[last]"]').val(),
-          year : $('input[name="person[year]"]').val()
+          first : $theform.find('input[name="person[first]"]').val(),
+          last : $theform.find('input[name="person[last]"]').val(),
+          year : $theform.find('input[name="person[year]"]').val()
         }
       }
       $.ajax({
