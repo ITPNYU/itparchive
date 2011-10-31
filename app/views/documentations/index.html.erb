@@ -4,39 +4,43 @@
   <thead>
     <tr>
       <th>Filename</th>
-      <th>Media Integrity</th>
     </tr>
   </thead>
   <tbody>
   <% @documentations.each do |documentation| %>
     <tr>
       <td class="orphaned-documentation">
-        <span class="file-name"><%= documentation.media.path.split("/").last %></span>
+        <span class="file-name" style="width: 100%;display:inline-block"><%= documentation.media.path.split("/").last %></span>
         <div class="add-thesis-form" id="form-<%= documentation.id %>">
           <form>
             <fieldset>
-              <h4>Documentation Integrity</h4>
-              <select name="integrity">
-                <option value="0">-</option>
-                <option value="1">Unacceptable</option>
-                <option value="2">Fragment</option>
-                <option value="3">Great</option>
-              </select>
-              
-              <select name="flag">
-                <option value="false">Unflagged</option>
-                <option value="true">Flagged</option>
-              </select>
+              <h4>Documentation:</h4>
+              <div class="field">
+                <label>Integrity:</label>
+                <select name="integrity">
+                  <option value="0">-</option>
+                  <option value="1">Unacceptable</option>
+                  <option value="2">Fragment</option>
+                  <option value="3">Great</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Flagged?:</label>
+                <select name="flag">
+                  <option value="false">Unflagged</option>
+                  <option value="true">Flagged</option>
+                </select>
+              </div>
 
               <h4>Thesis:</h4>
 
               <div class="field">
-                <label>Title:</label>
+                <label>Title:<span class="required">*</span></label>
                 <input type="text" name="thesis[title]" id="thesis_title" size="30" />
               </div>
 
               <div class="field">
-                <label>Year:</label>
+                <label>Year:<span class="required">*</span></label>
                 <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" />
               </div>
 
@@ -59,18 +63,10 @@
                 <label>Last Name:</label>
                 <input type="text" name="person[last]">
               </div>
-
-              <div>
-                <label>Graduation Year:</label>
-                <input type="number" name="person[year]" size="30" min="1970" max="<%= Date.today.year %>">
-              </div>
             </fieldset>
             <button class="submit">Create Thesis</button>
           </form>
         </div>
-      </td>
-      <td>
-        <%= documentation.integrity_word %>
       </td>
     </tr>
   <% end %>
