@@ -1,11 +1,16 @@
 $(function(){
+  $('.file-name').css('cursor','pointer');
   $('.file-name').click(function(){
     $(this).closest('td').find('.add-thesis-form').fadeToggle();
   });
 
   $('.add-thesis-form .submit').click(function(){
     $theform = $(this).closest('.add-thesis-form');
-    if($theform.find('input[name="thesis[title]"]').val() != "" && $theform.find('input[name="thesis[year]"]').val() != "")
+    if($theform.find('input[name="thesis[title]"]').val() == "" || $theform.find('input[name="thesis[year]"]').val() == "")
+    {
+        alert("You must fill in the Thesis Title and Year");
+    }
+    else
     {
       form = {
         id : $theform.find('input[name="documentation"]').val(),
@@ -22,6 +27,7 @@ $(function(){
           year : $theform.find('input[name="person[year]"]').val()
         }
       }
+      $(this).text('Saving...');
       $.ajax({
         url : '/documentations/'+form["id"],
         type : 'PUT',

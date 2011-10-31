@@ -21,6 +21,12 @@ $sky: rgb(173,213,252);
 	font-family: "Quicksand", sans-serif;
 }
 
+@mixin rounded-corner($radius: 5px) {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 @import "reset";
 /*@import "ggs";*/
 
@@ -141,5 +147,8 @@ header {
 	-webkit-box-shadow: 0 0 8px rgba(51,51,51,0.6);
 }
 
+.required {
+	color: $red;
+}
 @import "scaffolds";
 @import "theses";
