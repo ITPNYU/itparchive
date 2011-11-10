@@ -29,21 +29,3 @@ div {
   ul li {
     font-size: 12px;
     list-style: square; } }
-
-*:hover>.meta-links {
-	visibility: visible;
-}
-
-.meta-links {
-	color: $orange;
-	font-size: 0.9em;
-	visibility: hidden;
-
-	a {
-		color: $orange;
-	}
-
-	a.delete {
-		color: $red;
-	}
-}
