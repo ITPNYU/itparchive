@@ -19,8 +19,12 @@ class Documentation < ActiveRecord::Base
     words[condition]
   end
 
-  def link_to_pdf(text)
-    "<a href='http://s3.amazonaws.com/itp_archive#{media.path}'>#{text}</a>".html_safe
+  def link_to_pdf(text, target=nil)
+    output = "<a "
+    output += "target='_blank'" if target
+    output += "href='http://s3.amazonaws.com/itp_archive#{media.path}'>#{text}</a>"
+    output.html_safe
+  end
   end
 
   def integrity_word
