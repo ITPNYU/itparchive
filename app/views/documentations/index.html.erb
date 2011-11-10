@@ -11,60 +11,7 @@
       <td class="orphaned-documentation">
         <span class="file-name" style="width: 100%;display:inline-block"><%= documentation.media.path.split("/").last %></span>
         <div class="add-thesis-form" id="form-<%= documentation.id %>">
-          <form>
-            <fieldset>
-              <h4>Documentation:</h4>
-              <div class="field">
-                <label>Integrity:</label>
-                <select name="integrity">
-                  <option value="0">-</option>
-                  <option value="1">Unacceptable</option>
-                  <option value="2">Fragment</option>
-                  <option value="3">Great</option>
-                </select>
-              </div>
-              <div class="field">
-                <label>Flagged?:</label>
-                <select name="flag">
-                  <option value="false">Unflagged</option>
-                  <option value="true">Flagged</option>
-                </select>
-              </div>
-
-              <h4>Thesis:</h4>
-
-              <div class="field">
-                <label>Title:<span class="required">*</span></label>
-                <input type="text" name="thesis[title]" id="thesis_title" size="30" />
-              </div>
-
-              <div class="field">
-                <label>Year:<span class="required">*</span></label>
-                <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" />
-              </div>
-
-              <div class="field">
-                <label>Curatorial Notes:</label>
-                <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10" ></textarea>
-              </div>
-              <input type="hidden" name="documentation" value="<%= documentation.id %>">
-            </fieldset>
-
-            <fieldset>
-              <h4>Author:</h4>
-
-              <div class="field">
-                <label>First Name:</label>
-                <input type="text" name="person[first]"/>
-              </div>
-
-              <div class="field">
-                <label>Last Name:</label>
-                <input type="text" name="person[last]">
-              </div>
-            </fieldset>
-            <button class="submit">Create Thesis</button>
-          </form>
+          <%= render 'form', :doc => documentation %>
         </div>
       </td>
     </tr>
