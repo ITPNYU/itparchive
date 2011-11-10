@@ -25,6 +25,9 @@ class Documentation < ActiveRecord::Base
     output += "href='http://s3.amazonaws.com/itp_archive#{media.path}'>#{text}</a>"
     output.html_safe
   end
+
+  def embed_pdf
+    "http://s3.amazonaws.com/itp_archive#{media.path}"
   end
 
   def integrity_word
