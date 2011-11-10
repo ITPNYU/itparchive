@@ -1,4 +1,22 @@
 <div class="field">
+  <label>PDF:</label>
+  <% if doc.media %>
+  <p><%= doc.link_to_pdf("#{doc.media.path}", :target => '_blank') %></p>
+  <% else %>
+  <input id="documentation_media" type="file" name="documentation[media]"/>
+  <% end %>
+</div>
+
+<div class="field">
+  <label>Text:</label>
+  <% if doc.paper %>
+    <p><%= doc.paper[0..60] %>...</p>
+  <% else %>
+    <input id="documentation_paper" type="file" name="documentation[paper]"/>
+  <% end %>
+</div>
+
+<div class="field">
   <label>Integrity:</label>
   <select name="documentation[integrity]">
     <option value="0">Unevaluated</option>
@@ -13,25 +31,21 @@
   <label>Flagged?:</label>
   <select name="documentation[flag]">
     <option value="false">Unflagged</option>
-    <option value="true">Flagged</option>
+    <option <%= "selected" if doc.flag == true %> value="true">Flagged</option>
   </select>
   <p class="description">Does the PDF need to be edited?</p>
 </div>
 
 <div class="field">
-  <label>Physical Location:</label>
-  <input type="text" name="documentation[physical_location]" size="30"/>
-  <p class="description">Where is this piece of documentation right now? Be terse yet descriptive.</p>
-</div>
-
-<div class="field">
+  <label>Read?</label>
   <select name="documentation[read]">
     <option value="false">Unread</option>
-    <option value="true">Read</option>
+    <option <%= "selected" if doc.read == true %> value="true">Read</option>
   </select>
 </div>
 
 <div class="field">
-  <label>PDF:</label>
-  <input id="documentation_media" type="file" name="documentation[media]" />
+  <label>Physical Location:</label>
+  <input type="text" name="documentation[physical_location]" size="30" value="<%= doc.physical_location %>"/>
+  <p class="description">Where is this piece of documentation right now? Be terse yet descriptive.</p>
 </div>

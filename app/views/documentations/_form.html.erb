@@ -1,9 +1,12 @@
-<form>
+<form enctype="multipart/form-data">
   <fieldset>
     <h4>Documentation:</h4>
 
-    <%= render 'formdoc' %>
+    <%= render 'formdoc', :doc => doc %>
 
+  </fieldset>
+
+  <fieldset>
     <h4>Thesis:</h4>
 
     <div class="field">
@@ -20,11 +23,10 @@
     <div class="field">
       <label>Curatorial Notes:</label>
       <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10" ></textarea>
+      <p class="caption">Get descriptive if you want, or make tweet-like statements about the thesis.</p>
     </div>
     <input type="hidden" name="documentation" value="<%= doc.id %>">
-  </fieldset>
 
-  <fieldset>
     <h4>Author:</h4>
 
     <div class="field">
@@ -36,6 +38,8 @@
       <label>Last Name:</label>
       <input type="text" name="person[last]">
     </div>
+
   </fieldset>
+
   <button class="submit">Create Thesis</button>
 </form>
