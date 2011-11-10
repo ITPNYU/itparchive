@@ -13,18 +13,20 @@ $(function(){
     else
     {
       form = {
-        id : $theform.find('input[name="documentation"]').val(),
-        integrity : $theform.find('select[name="integrity"]').val(),
-        flag : $theform.find('select[name="flag"]').val(),
+        id : $theform.find('[name="documentation"]').val(),
+        integrity : $theform.find('[name="documentation[integrity]"]').val(),
+        flag : $theform.find('[name="documentation[flag]"]').val(),
+        physical_location : $theform.find('[name="documentation[physical_location]"]').val(),
+        read : $theform.find('[name="documentation[read]"]').val(),
         thesis : {
-          title : $theform.find('input[name="thesis[title]"]').val(),
-          year : $theform.find('input[name="thesis[year]"]').val(),
-          notes : $theform.find('input[name="thesis[notes]"]').val(),
+          title : $theform.find('[name="thesis[title]"]').val(),
+          year : $theform.find('[name="thesis[year]"]').val(),
+          notes : $theform.find('[name="thesis[notes]"]').val(),
         },
         person : {
-          first : $theform.find('input[name="person[first]"]').val(),
-          last : $theform.find('input[name="person[last]"]').val(),
-          year : $theform.find('input[name="person[year]"]').val()
+          first : $theform.find('[name="person[first]"]').val(),
+          last : $theform.find('[name="person[last]"]').val(),
+          year : $theform.find('[name="person[year]"]').val()
         }
       }
       $(this).text('Saving...');

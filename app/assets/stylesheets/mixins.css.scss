@@ -1,0 +1,20 @@
+@mixin column-padding($side) {
+  padding-#{$side}: #{($line/2)/$em}em;
+}
+@mixin header-font {
+  font-family: "Quicksand", sans-serif;
+}
+
+@mixin rounded-corner($radius: 5px) {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* form */
+@mixin input-style {
+  border: 1px solid rgb(220,220,220);
+  padding: 0.5em;
+  @include rounded-corner(1px);
+  outline-color: rgb(170,170,170);
+}

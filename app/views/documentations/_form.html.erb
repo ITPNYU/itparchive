@@ -1,0 +1,45 @@
+<form enctype="multipart/form-data">
+  <fieldset>
+    <h4>Documentation:</h4>
+
+    <%= render 'formdoc', :doc => doc %>
+
+  </fieldset>
+
+  <fieldset>
+    <h4>Thesis:</h4>
+
+    <div class="field">
+      <label>Title:<span class="required">*</span></label>
+      <input type="text" name="thesis[title]" id="thesis_title" size="30" />
+      <p class="description"></p>
+    </div>
+
+    <div class="field">
+      <label>Year:<span class="required">*</span></label>
+      <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" />
+    </div>
+
+    <div class="field">
+      <label>Curatorial Notes:</label>
+      <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10" ></textarea>
+      <p class="caption">Get descriptive if you want, or make tweet-like statements about the thesis.</p>
+    </div>
+    <input type="hidden" name="documentation" value="<%= doc.id %>">
+
+    <h4>Author:</h4>
+
+    <div class="field">
+      <label>First Name:</label>
+      <input type="text" name="person[first]"/>
+    </div>
+
+    <div class="field">
+      <label>Last Name:</label>
+      <input type="text" name="person[last]">
+    </div>
+
+  </fieldset>
+
+  <button class="submit">Create Thesis</button>
+</form>

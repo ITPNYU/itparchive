@@ -32,33 +32,6 @@
   </section>
 
   <section>
-    <h4>Article:</h4>
-    <fieldset>
-      <div class="field">
-        <h5><label>PDF:</label></h5>
-        <ul>
-        <% @thesis.documentations.each do |d| %>
-          <li><%= d.media.path %></li>
-        <% end %>
-        </ul>
-        <p>Upload PDF: <input id="documentation_media" type="file" name="documentation[media]" /></p>
-      </div>
-
-     
-
-      <div class="field">
-        <h5><label>Text File:</label></h5>
-        <ul>
-          <% @thesis.documentations.each do |d| %>
-            <p>"<%= d.paper[0..60] %>..."</p>
-          <% end %>
-        </ul>
-        <p>Upload Text File: <input id="documentation_paper" type="file" name="documentation[paper]"></p>
-      </div>
-    </fieldset>
-  </section>
-
-  <section>
     <h4>Author:</h4>
     <fieldset>
       <div class="field">
@@ -77,8 +50,25 @@
       </div>
     </fieldset>
   </section>
+
+  <section>
+    <h4>Article(s):</h4>
+      <% @thesis.documentations.each do |d| %>
+      <fieldset>
+        <%= render 'documentations/formdoc', :doc => d %>
+      </fieldset>
+      <% end %>
+
+      <fieldset>
+        <div class="field">
+          <h5><label>Add Another:</label></h5>
+          <p>Upload PDF: <input id="documentation_media" type="file" name="documentation[media]" /></p>
+          <p>Upload Text File: <input id="documentation_paper" type="file" name="documentation[paper]"></p>
+        </div>
+      </fieldset>
+  </section>
   
   <div class="actions">
-    <%= f.submit %>
+    <button class="submit">Save Thesis</button>
   </div>
 <% end %>

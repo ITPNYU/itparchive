@@ -4,7 +4,7 @@ $font-size: 13;
 $em: $font-size * 1.2;
 $golden: 1.618;
 
-/* COLORS */
+// COLORS
 $white: rgb(255,255,255);
 $green: rgb(38,114,11);
 $red: rgb(205,49,13);
@@ -14,24 +14,11 @@ $color-2: rgb(198,199,201);
 $slate: rgb(206,212,229);
 $sky: rgb(173,213,252);
 
-@mixin column-padding($side) {
-	padding-#{$side}: #{($line/2)/$em}em;
-}
-@mixin header-font {
-	font-family: "Quicksand", sans-serif;
-}
-
-@mixin rounded-corner($radius: 5px) {
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
 @import "reset";
-/*@import "ggs";*/
-
+@import "mixins";
+@import "form";
 html {
-	margin: 0;
+  margin: 0;
 }
 
 body {
@@ -40,11 +27,11 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 1.6em;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 p, ol, ul, td {
@@ -62,93 +49,94 @@ a {
 
   &:hover {
     color: rgb(8,52,139);
-	}
+  }
 }
 
 h1,h2,h3,h4,h5,h6 {
-	@include header-font;
+  @include header-font;
 }
 
 h1 {
-	font-size: #{$font-size*$golden*2}px;
-	line-height: 1.8em;
-	margin: 0.25em 0 0.75em;
+  font-size: #{$font-size*$golden*2}px;
+  line-height: 1.8em;
+  margin: 0.25em 0 0.75em;
 }
 
 h2 {
-	font-size: 3.526em;
-	line-height: 1.7em;
-	margin: 0.25em 0 0.75em;
+  font-size: 3.526em;
+  line-height: 1.7em;
+  margin: 0.25em 0 0.75em;
 }
 
 h3 {
-	font-size: 2.618em;
-	line-height: 1.6em;
-	margin: 0.35em;
+  font-size: 2.618em;
+  line-height: 1.6em;
+  margin: 0.35em;
 }
 
 h4 {
-	font-size: 2.179em;
-	line-height: 1.2em;
-	margin: 0.25em 0;
+  font-size: 2.179em;
+  line-height: 1.2em;
+  margin: 0.25em 0;
 }
 
 h5 {
-	font-size: 1.618em;
-	line-height: 1em;
+  font-size: 1.618em;
+  line-height: 1em;
 }
 
 h6 {
-	font-size: 1.347em;
-	line-height: 1em;
+  font-size: 1.347em;
+  line-height: 1em;
 }
 
 em {
-	font-style: italic;
+  font-style: italic;
 }
 
 th {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 #wrapper {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #content {
-	padding: 1em $column;
-	position: relative;
-	width: #{$column*16};
+  padding: 1em $column;
+  position: relative;
+  width: #{$column*16};
 }
 
 header {
-	background-color: $base-color;
-	left: 0;
-	margin: 0;
-	padding: 1em $column;
-	position: relative;
-	top: 0;
-	width: #{$column*16};
+  background-color: $base-color;
+  left: 0;
+  margin: 0;
+  padding: 1em $column;
+  position: relative;
+  top: 0;
+  width: #{$column*16};
 
-	h1 {
-		font-size: #{$font-size*$golden}px;
-	}
+  h1 {
+    font-size: #{$font-size*$golden}px;
+  }
 
-	nav {
-		ul li{
-			display: inline;
-		}
-	}
+  nav {
+    ul li{
+      display: inline;
+    }
+  }
 }
 
 #content {
-	background-color: $white;
-	-webkit-box-shadow: 0 0 8px rgba(51,51,51,0.6);
+  background-color: $white;
+  -webkit-box-shadow: 0 0 8px rgba(51,51,51,0.6);
 }
 
 .required {
-	color: $red;
+  color: $red;
 }
-@import "scaffolds";
+
+//@import "scaffolds";
 @import "theses";
