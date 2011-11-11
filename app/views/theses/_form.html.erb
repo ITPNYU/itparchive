@@ -26,7 +26,7 @@
     
       <div class="field">
         <label>Curatorial Notes:</label>
-        <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10" <%= edit_value(@thesis,'notes') %>></textarea>
+        <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10"><%= @thesis[:notes] if @thesis %></textarea>
       </div>
     </fieldset>
   </section>
