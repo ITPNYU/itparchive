@@ -17,8 +17,14 @@ class DocumentationsController < ApplicationController
   end
 
   def update
-    # raise params.inspect
+    puts params.inspect
     @documentation = Documentation.find(params[:id])
+    @documentation.update_attributes({
+      :physical_location => params[:physical_location],
+      :read => params[:read],
+      :has_images => params[:has_images],
+      :integrity => params[:integrity]
+    })
     @documentation.integrity = params[:integrity]
     if (params[:flag] == "true")
       @documentation.flag = true
