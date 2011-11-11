@@ -38,10 +38,12 @@
 
 <div class="field">
   <label>Read?</label>
-  <select name="documentation[read]">
-    <option value="false">Unread</option>
-    <option <%= "selected" if doc.read == true %> value="true">Read</option>
-  </select>
+  <input type="checkbox" name="documentation[read]" id="documentation[read]" <%= "checked" if doc.read %>/>
+</div>
+
+<div class="field">
+  <label>Has Images?</label>
+  <input type="checkbox" name="documentation[has_images]" <%= "checked" if doc.has_images %>/>
 </div>
 
 <div class="field">

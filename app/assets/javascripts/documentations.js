@@ -17,7 +17,8 @@ $(function(){
         integrity : $theform.find('[name="documentation[integrity]"]').val(),
         flag : $theform.find('[name="documentation[flag]"]').val(),
         physical_location : $theform.find('[name="documentation[physical_location]"]').val(),
-        read : $theform.find('[name="documentation[read]"]').val(),
+        read : ($theform.find('[name="documentation[read]"]').attr('checked') == 'checked') ? true : false,
+        has_images : ($theform.find('[name="documentation[has_images]"]').attr('checked') == 'checked') ? true : false,
         thesis : {
           title : $theform.find('[name="thesis[title]"]').val(),
           year : $theform.find('[name="thesis[year]"]').val(),
