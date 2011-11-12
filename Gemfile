@@ -19,7 +19,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'redcarpet'
+gem 'redcarpet' # Markdown
 
+# Users
+gem 'devise'
+
+# AWS Integration
 gem 'aws-s3', :require => 'aws/s3'
 gem 'paperclip', '~> 2.4'

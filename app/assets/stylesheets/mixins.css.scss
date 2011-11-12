@@ -18,3 +18,11 @@
   @include rounded-corner(1px);
   outline-color: rgb(170,170,170);
 }
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}

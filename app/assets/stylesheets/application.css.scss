@@ -122,6 +122,10 @@ header {
     font-size: #{$font-size*$golden}px;
   }
 
+  #user-nav {
+    @extend .float-right;
+  }
+
   nav {
     ul li{
       display: inline;
@@ -136,6 +140,20 @@ header {
 
 .required {
   color: $red;
+}
+
+#notice {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+
+  .notice {
+    background-color: green;
+  }
+  
+  .alert {
+    background-color: red;
+  }
 }
 
 //@import "scaffolds";
