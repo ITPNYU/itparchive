@@ -1,4 +1,5 @@
 class DocumentationsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
     @documentations = Documentation.where(:thesis_id => nil)
