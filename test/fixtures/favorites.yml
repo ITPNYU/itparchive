@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  thesis_id: 1
+  documentation_id: 1
+
+two:
+  user_id: 1
+  thesis_id: 1
+  documentation_id: 1

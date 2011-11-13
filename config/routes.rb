@@ -5,9 +5,9 @@ Itparchive::Application.routes.draw do
     resources :people
   end
 
-  resources :people, :documentations
+  resources :people, :documentations, :favorites
 
-  root :to => 'theses#index'
+  root :to => 'favorites#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

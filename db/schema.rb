@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112193210) do
+ActiveRecord::Schema.define(:version => 20111112214547) do
 
   create_table "documentations", :force => true do |t|
     t.string   "type"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20111112193210) do
     t.string   "physical_location"
     t.boolean  "read"
     t.boolean  "has_images"
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "thesis_id"
+    t.integer  "documentation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", :force => true do |t|
