@@ -1,0 +1,24 @@
+<h1>Favorites</h1>
+
+<table id="favorites-table">
+<thead>
+  <th>Thesis</th>
+  <th>User</th>
+</thead>
+<tbody>
+<% @favorites.each do |favorite| %>
+  <tr>
+    <td>
+    <% if favorite.thesis %>
+      <%= link_to favorite.thesis.title, thesis_path(favorite.thesis) %>
+    <% else %>
+      <%= favorite.documentation.title %>
+    <% end %>
+    </td>
+    <td>
+      <%= favorite.user.username %>
+    </td>
+  </tr>
+<% end %>
+</tbody>
+</table>

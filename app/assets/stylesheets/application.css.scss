@@ -13,6 +13,7 @@ $base-color: rgb(248,250,252);
 $color-2: rgb(198,199,201);
 $slate: rgb(206,212,229);
 $sky: rgb(173,213,252);
+$link: rgb(17,114,228);
 
 @import "reset";
 @import "mixins";
@@ -155,6 +156,22 @@ header {
     background-color: red;
   }
 }
+
+.favorited {
+  text-decoration: none;
+  color: $orange;
+  &:hover {
+    color: $link;
+  }
+}
+.add-favorite {
+  text-decoration: none;
+  color: $slate;
+  &:hover {
+    color: $orange;
+  }
+}
+
 
 //@import "scaffolds";
 @import "theses";
