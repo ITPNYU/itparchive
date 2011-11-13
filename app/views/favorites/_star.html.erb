@@ -1,5 +1,0 @@
-<% if defined? favorites %>
-  <a title="<%- favorites.each do |f|%> <%= f.user.username -%> <% end %>" class="favorited" href="#">★</a>
-<% else %>
-  <a href="#<%= thesis.id %>" class="add-favorite">☆</a>
-<% end %>

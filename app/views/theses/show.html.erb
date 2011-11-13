@@ -1,19 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @thesis.title %>
-</p>
+<h4><%= @thesis.title %> (<%= @thesis.year %>) <%= favorite_star(@thesis, current_user) %></h4>
+<h5><%= @thesis.person.full_name if @thesis.person %></h5>
 
-<p>
-  <b>Person:</b>
-  <%= @thesis.person.full_name if @thesis.person %>
-</p>
-
-<p>
-  <b>Year:</b>
-  <%= @thesis.year %>
-</p>
+<%= link_to 'Edit', edit_thesis_path(@thesis) %>
 
 <div>
   <% if @thesis.documentations %>
@@ -24,5 +14,4 @@
   <% end %>
 </div>
 
-<%= link_to 'Edit', edit_thesis_path(@thesis) %> |
 <%= link_to 'Back', theses_path %>

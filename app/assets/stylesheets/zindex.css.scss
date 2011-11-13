@@ -1,0 +1,8 @@
+.zauto {
+  z-index: auto;
+}
+@for $i from 0 through 20 {
+  .z#{$i} {
+    z-index: $i;
+  }
+}

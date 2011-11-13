@@ -1,0 +1,33 @@
+.favorite-star {
+  color: $slate;
+  padding: 0.25em;
+  position: relative;
+  text-decoration: none;
+
+  .favorites-list {
+    display: none;
+  }
+
+  &:hover {
+    color: $orange;
+  }
+
+}
+
+.has-favorites {
+  text-decoration: none;
+  color: $orange;
+  &:hover {
+    background-color: $slate;
+    color: $link;
+
+    .favorites-list {
+      color: $font-base;
+      background-color: $slate;
+      display: block;
+      padding: 0.25em;
+      position: absolute;
+      @extend .z2;
+    }
+  }
+}

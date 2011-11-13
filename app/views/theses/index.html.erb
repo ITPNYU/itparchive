@@ -16,11 +16,7 @@
   <tr>
     <td><%= thesis.person.full_name if thesis.person %></td>
     <td>
-      <% if thesis.favorites.length >= 1 %>
-        <%= render 'favorites/star', :favorites => thesis.favorites, :user => current_user %>
-      <% else %>
-        <%= render 'favorites/star', :thesis => thesis %>
-      <% end %>
+      <%= favorite_star(thesis, current_user) %>
     </td>
     <td>
       <% if thesis.title %>
