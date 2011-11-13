@@ -11,14 +11,30 @@
   <div id="wrapper">
     <header>
       <h1><a href="/">ITP Archive</a></h1>
-      
+
+      <div id="user-nav">
+        <% if user_signed_in? %>
+          Signed in as <%= link_to current_user.username, '/users/edit' %>
+          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
+        <% end %>
+      </div>
+
       <nav>
         <ul>
           <li><%= link_to "Theses", theses_path %></li>
           <li><%= link_to "Documentations", documentations_path %></li>
+          <li><%= link_to "Favorites", favorites_path %></li>
         </ul>
       </nav>
     </header>
+    <% if notice || alert %>
+    <div id="notice">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
     <div id="content">
       <%= yield %>
     </div>

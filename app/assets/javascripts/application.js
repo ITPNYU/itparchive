@@ -9,7 +9,7 @@
 //= require_tree .
 
 $(function(){
-  $('#theses-table, #documentations-table').dataTable({
+  $('#theses-table, #documentations-table, #favorites-table').dataTable({
     "bPaginate": false
   });
 });

@@ -5,6 +5,7 @@
 <table id="theses-table">
   <thead>
     <th>Person</th>
+    <th></th>
     <th>Title</th>
     <th>Year</th>
     <th>PDF</th>
@@ -14,6 +15,13 @@
 <% @theses.each do |thesis| %>
   <tr>
     <td><%= thesis.person.full_name if thesis.person %></td>
+    <td>
+      <% if thesis.favorites.length >= 1 %>
+        <%= render 'favorites/star', :favorites => thesis.favorites, :user => current_user %>
+      <% else %>
+        <%= render 'favorites/star', :thesis => thesis %>
+      <% end %>
+    </td>
     <td>
       <% if thesis.title %>
       <%= link_to thesis.title, thesis %>
@@ -28,7 +36,7 @@
     <td><%= thesis.year %></td>
     <td>
       <% thesis.documentations.each do |document| %>
-        <%= document.link_to_pdf('download') if document.media_file_name %>
+        <%= document.link_to_pdf('view') if document.media_file_name %>
       <% end %>
     </td>
     <td>

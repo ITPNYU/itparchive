@@ -1,11 +1,13 @@
 Itparchive::Application.routes.draw do
+  devise_for :users, :path_names => {:sign_in => "login"}
+
   resources :theses do
     resources :people
   end
 
-  resources :people, :documentations
+  resources :people, :documentations, :favorites
 
-  root :to => 'theses#index'
+  root :to => 'favorites#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

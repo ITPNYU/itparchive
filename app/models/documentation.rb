@@ -1,6 +1,7 @@
 class Documentation < ActiveRecord::Base
 
   belongs_to :thesis
+  has_many :favorites
 
   has_attached_file :media, 
                     :storage => :s3, 
