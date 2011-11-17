@@ -63,20 +63,19 @@
   </section>
 
   <section>
-    <h4>Article(s):</h4>
-      <% @thesis.documentations.each do |d| %>
-      <fieldset>
-        <%= render 'documentations/formdoc', :doc => d %>
-      </fieldset>
+    <h4>Documentation(s):</h4>
+      <% if @thesis.documentations.length >= 1 %>
+        <% @thesis.documentations.each do |d| %>
+        <fieldset>
+          <%= render "#{d.type.downcase.pluralize}/form", :doc => d %>
+        </fieldset>
+        <% end %>
+      <% else %>
+        <fieldset>
+        <%= render "articles/form" %>
+        <%= render "media/form" %>
+        </fieldset>
       <% end %>
-
-      <fieldset>
-        <div class="field">
-          <h5><label>Add Another:</label></h5>
-          <p>Upload PDF: <input id="documentation_media" type="file" name="documentation[media]" /></p>
-          <p>Upload Text File: <input id="documentation_paper" type="file" name="documentation[paper]"></p>
-        </div>
-      </fieldset>
   </section>
   
   <div class="actions">
