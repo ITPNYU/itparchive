@@ -1,7 +1,7 @@
 class Documentation < ActiveRecord::Base
 
   belongs_to :thesis
-  has_many :favorites
+  has_many :favorites, :as => :favoritable
   has_many :notes, :as => :notable
 
   has_attached_file :media, 
