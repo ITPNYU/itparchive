@@ -1,5 +1,5 @@
 $(function(){
-  $('[class="favorite-star"][class!="favorited"]').click(function(){
+  $('[class*="favorite-star"][class!="favorited"]').click(function(){
     $(this)
       .addClass('favorited')
       .addClass('has-favorites')
