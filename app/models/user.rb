@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :favorites
+  has_many :notes
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :registerable, :timeoutable and :omniauthable
   devise :database_authenticatable,
