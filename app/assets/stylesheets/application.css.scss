@@ -5,16 +5,16 @@ $em: $font-size * 1.2;
 $golden: 1.618;
 
 // COLORS
-$font-base: rgb(0,0,0);
-$white: rgb(255,255,255);
-$green: rgb(38,114,11);
-$red: rgb(205,49,13);
-$orange: rgb(205,100,13);
-$base-color: rgb(248,250,252);
-$color-2: rgb(198,199,201);
-$slate: rgb(206,212,229);
-$sky: rgb(173,213,252);
-$link: rgb(17,114,228);
+$font-base: rgba(0,0,0,1);
+$white: rgba(255,255,255,1);
+$green: rgba(38,114,11,1);
+$red: rgba(205,49,13,1);
+$orange: rgba(205,100,13,1);
+$base-color: rgba(248,250,252,1);
+$color-2: rgba(198,199,201,1);
+$slate: rgba(206,212,229,1);
+$sky: rgba(173,213,252,1);
+$link: rgba(17,114,228,1);
 
 @import "reset";
 @import "mixins";

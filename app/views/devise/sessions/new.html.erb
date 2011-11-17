@@ -11,7 +11,9 @@
     <div><%= f.check_box :remember_me %> Remember Me</div>
   <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
+  <div class="actions">
+    <button class="submit">Sign in</button>
+  </div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
