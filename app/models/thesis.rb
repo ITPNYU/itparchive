@@ -5,4 +5,5 @@ class Thesis < ActiveRecord::Base
   has_many :favorites
   accepts_nested_attributes_for :person, :documentations
 
+  has_many :notes, :as => :notable
 end

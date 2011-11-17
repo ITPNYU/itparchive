@@ -47,6 +47,12 @@ class ThesesController < ApplicationController
     @thesis = Thesis.new(params[:thesis]) #{:attribute => "value", :attribute2 => 1  }
     @thesis.documentations << Article.new(params[:documentation]) # params = {:thesis => {...}, :documentation => {:media => {...}}}
     @thesis.person = Person.new(params[:person])
+    
+    if params[:note]
+      note = Note.new(params[:note])
+      note.user = current_user
+      @thesis.notes <<  note
+    end
 
     respond_to do |format|
       if @thesis.save

@@ -25,8 +25,19 @@
       </div>
     
       <div class="field">
-        <label>Curatorial Notes:</label>
-        <textarea id="thesis_notes" type="" name="thesis[notes]" cols="50" rows="10"><%= @thesis[:notes] if @thesis %></textarea>
+        <% unless @thesis.notes.empty? %>
+          <h5>Existing notes:</h5>
+          <% @thesis.notes.each do |note| %>
+            <div class="note">
+              <blockquote>
+                <%= note.body %>
+              </blockquote>
+              <p>&mdash;<%= note.user %></p>
+            </div>
+          <% end %>
+        <% end %>
+        <label>Add a note:</label>
+        <textarea id="note_body" type="" name="note[body]" cols="50" rows="10"></textarea>
       </div>
     </fieldset>
   </section>

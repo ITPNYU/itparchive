@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111117034705) do
+ActiveRecord::Schema.define(:version => 20111117040722) do
 
   create_table "documentations", :force => true do |t|
     t.string    "type"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(:version => 20111117034705) do
     t.timestamp "updated_at"
   end
 
+  create_table "notes", :force => true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.string   "notable_type"
+    t.integer  "notable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", :force => true do |t|
     t.string    "first"
     t.string    "last"
@@ -57,11 +66,10 @@ ActiveRecord::Schema.define(:version => 20111117034705) do
   end
 
   create_table "theses", :force => true do |t|
-    t.string    "title"
-    t.integer   "year"
-    t.text      "notes"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "title"
+    t.integer  "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
