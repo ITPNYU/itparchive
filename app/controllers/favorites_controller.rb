@@ -8,8 +8,7 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new({
       :user_id => current_user.id,
-      :favoritable_id => params[:favoritable_id],
-      :favoritable_type => params[:favoritable_type]
+      :favoritable => Object.const_get(params[:favoritable_type]).find(params[:favoritable_id]),
     })
     if @favorite.save
       render json: @favorite, status: :created
