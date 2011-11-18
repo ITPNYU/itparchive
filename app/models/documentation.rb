@@ -11,7 +11,11 @@ class Documentation < ActiveRecord::Base
                     :path => "/documentation/:id/:filename"
 
   before_save :default_values
-  
+
+  def read?
+    read
+  end
+
   def default_values
     self.integrity = 0 unless self.integrity
   end
