@@ -7,7 +7,7 @@ class ChangeFavoritesToPolymorphic < ActiveRecord::Migration
 
     Favorite.all.each do |t|
       Favorite.create :user_id => t.user_id, :favoritable => Thesis.find(t.thesis_id)
-      t.des
+      t.destroy
     end
 
     remove_column :favorites, :thesis_id
