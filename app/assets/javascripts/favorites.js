@@ -1,5 +1,5 @@
 $(function(){
-  $('[class="favorite-star"][class!="favorited"]').click(function(){
+  $('[class*="favorite-star"][class!="favorited"]').click(function(){
     $(this)
       .addClass('favorited')
       .addClass('has-favorites')
@@ -8,8 +8,10 @@ $(function(){
     $.ajax({
       url : '/favorites',
       type : 'POST',
-      data : {thesis_id : $(this).attr('href').substring(1)},
-      
+      data : {
+        favoritable_type : $(this).attr('title'),
+        favoritable_id : $(this).attr('href').substring(1)
+      }
     });
     return false;
   });

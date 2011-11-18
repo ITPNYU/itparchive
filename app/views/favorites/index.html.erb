@@ -9,14 +9,14 @@
 <% @favorites.each do |favorite| %>
   <tr>
     <td>
-    <% if favorite.thesis %>
-      <%= link_to favorite.thesis.title, thesis_path(favorite.thesis) %>
-    <% else %>
-      <%= favorite.documentation.title %>
-    <% end %>
+      <% if favorite.favoritable_type == "Thesis" %>
+        <%= link_to favorite.favoritable, theses_path(favorite.favoritable)  %>
+      <% else %>
+        <%= link_to favorite.favoritable, documentation_path(favorite.favoritable)  %>
+      <% end %>
     </td>
     <td>
-      <%= favorite.user.username %>
+      <%= favorite.user %>
     </td>
   </tr>
 <% end %>
