@@ -10,8 +10,10 @@ class CreateNotes < ActiveRecord::Migration
     end
     
     u = User.find 1
-    Thesis.find(:all, :conditions => ["notes is not null and notes != \" \""]).each do |t|
-      Note.create :body => t.notes, :notable => t, :user_id => u.id
+    Thesis.all.each do |t|
+      if t.notes != nil && t.notes != " "
+        Note.create :body => t.notes, :notable => t, :user_id => u.id
+      end
     end
     
     remove_column :theses, :notes
