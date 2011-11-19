@@ -4,8 +4,7 @@ class ThesesController < ApplicationController
   # GET /theses
   # GET /theses.json
   def index
-    @theses = Thesis.all
-    @people = Person.all
+    @theses = Thesis.find(:all, :include => [:person, :favorites, :documentations])
 
     respond_to do |format|
       format.html # index.html.erb
