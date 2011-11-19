@@ -4,8 +4,9 @@
 
 <table id="theses-table">
   <thead>
-    <th>Person</th>
+    <th>Author</th>
     <th></th>
+    <th>Read?</th>
     <th>Title</th>
     <th>Year</th>
     <th>PDF</th>
@@ -17,6 +18,9 @@
     <td><%= thesis.person.full_name if thesis.person %></td>
     <td>
       <%= favorite_star(thesis, current_user) %>
+    </td>
+    <td>
+      <%= thesis.read_status %>
     </td>
     <td>
       <% if thesis.title %>

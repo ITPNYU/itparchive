@@ -13,10 +13,10 @@ module FavoritesHelper
           favorites_list << "<li class='current-user'>You</li>"
           classes << "favorited"
         else
-          favorites_list << "<li>#{f.user.username}</li>"
+          favorites_list << "<li>#{f.user}</li>"
         end
       end
     end
-    return link_to("#{star}<ul class='favorites-list'>#{favorites_list.join("")}</ul>".html_safe, "##{item.id}", :class => classes)
+    return link_to("#{star}<ul class='favorites-list'>#{favorites_list.join("")}</ul>".html_safe, "##{item.id}", :class => classes, :title => item.class)
   end
 end

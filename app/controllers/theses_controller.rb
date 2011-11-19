@@ -43,10 +43,21 @@ class ThesesController < ApplicationController
   # POST /theses
   # POST /theses.json
   def create
-    params[:documentation][:paper] = params[:documentation][:paper].tempfile.readline if params[:documentation][:paper]
     @thesis = Thesis.new(params[:thesis]) #{:attribute => "value", :attribute2 => 1  }
-    @thesis.documentations << Article.new(params[:documentation]) # params = {:thesis => {...}, :documentation => {:media => {...}}}
+    if params[:article] != nil
+      params[:article][:paper] = params[:article][:paper].tempfile.readline if params[:article][:paper]
+      @thesis.documentations << Article.new(params[:article]) # params = {:thesis => {...}, :article => {:media => {...}}}
+    end
+    if params[:media] != nil
+      @thesis.documentations << Media.new(params[:media]) # params = {:thesis => {...}, :media => {:media => {...}}}
+    end
     @thesis.person = Person.new(params[:person])
+    
+    if params[:note]
+      note = Note.new(params[:note])
+      note.user = current_user
+      @thesis.notes <<  note
+    end
 
     respond_to do |format|
       if @thesis.save

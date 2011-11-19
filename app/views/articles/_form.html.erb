@@ -1,0 +1,59 @@
+<% doc ||= Article.new %>
+<div class="documentation-form">
+<h5>Article</h5>
+
+<div class="field">
+  <label>PDF:</label>
+  <% if doc.media? %>
+  <%= doc.media %>
+  <p><%= doc.link_to_pdf("#{doc.media.path}", :target => '_blank') %></p>
+  <% else %>
+  <input id="article_media" type="file" name="article[media]"/>
+  <% end %>
+</div>
+
+<div class="field">
+  <label>Text:</label>
+  <% if doc.paper %>
+    <p><%= doc.paper[0..60] %>...</p>
+  <% else %>
+    <input id="article_paper" type="file" name="article[paper]"/>
+  <% end %>
+</div>
+
+<div class="field">
+  <label>Integrity:</label>
+  <select name="article[integrity]">
+    <option value="0">Unevaluated</option>
+    <option value="1">Unacceptable</option>
+    <option value="2">Fragment</option>
+    <option value="3">Great</option>
+  </select>
+  <p class="description">What is the state of the text file compared to the PDF?</p>
+</div>
+
+<div class="field">
+  <label>Flagged?:</label>
+  <select name="article[flag]">
+    <option value="false">Unflagged</option>
+    <option <%= "selected" if doc.flag == true %> value="true">Flagged</option>
+  </select>
+  <p class="description">Does the PDF need to be edited?</p>
+</div>
+
+<div class="field">
+  <label>Read?</label>
+  <input type="checkbox" name="article[read]" id="article[read]" <%= "checked" if doc.read %>/>
+</div>
+
+<div class="field">
+  <label>Has Images?</label>
+  <input type="checkbox" name="article[has_images]" <%= "checked" if doc.has_images %>/>
+</div>
+
+<div class="field">
+  <label>Physical Location:</label>
+  <input type="text" name="article[physical_location]" size="30" <%= edit_value doc, "physical_location" %>/>
+  <p class="description">Where is this piece of article right now? Be terse yet descriptive.</p>
+</div>
+</div>

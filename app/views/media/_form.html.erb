@@ -1,0 +1,45 @@
+<% doc ||= Media.new %>
+<div class="documentation-form">
+<h5>Media</h5>
+
+<div class="field">
+  <label>Title</label>
+  <input type="text" name="media[title]" <%= edit_value doc, "title" %>/>
+</div>
+
+<div class="field">
+  <label>Medium</label>
+  <input type="text" name="media[medium]" <%= edit_value doc, "medium" %>/>
+</div>
+
+<div class="field">
+  <label>Integrity:</label>
+  <select name="media[integrity]">
+    <option value="0">Unevaluated</option>
+    <option value="1">Unacceptable</option>
+    <option value="2">Fragment</option>
+    <option value="3">Great</option>
+  </select>
+  <p class="description">What is the state of the text file compared to the PDF?</p>
+</div>
+
+<div class="field">
+  <label>Flagged?:</label>
+  <select name="media[flag]">
+    <option value="false">Unflagged</option>
+    <option <%= "selected" if doc.flag == true %> value="true">Flagged</option>
+  </select>
+  <p class="description">Does the PDF need to be edited?</p>
+</div>
+
+<div class="field">
+  <label>Viewed?</label>
+  <input type="checkbox" name="media[read]" id="media[read]" <%= "checked" if doc.read %>/>
+</div>
+
+<div class="field">
+  <label>Physical Location:</label>
+  <input type="text" name="media[physical_location]" size="30" <%= edit_value doc, "physical_location" %>/>
+  <p class="description">Where is this piece of documentation right now? Be terse yet descriptive.</p>
+</div>
+</div>
