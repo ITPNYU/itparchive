@@ -3,13 +3,14 @@ class ThesesController < ApplicationController
 
   # GET /theses
   # GET /theses.json
-  def index
-    @theses = Thesis.all
-    @people = Person.all
+  def index    
+    @theses = Thesis.find(:all, :include => [:person, :favorites, :documentations])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @theses }
+      format.json { 
+        render json: @theses
+      }
     end
   end
 

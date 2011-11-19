@@ -1,16 +1,22 @@
-<script type="text/template" id="thesis-template">
-  <h4><%= @thesis.title %> (<%= @thesis.year %>) <%= favorite_star(@thesis, current_user) %></h4>
-  <h5><%= @thesis.person.full_name if @thesis.person %></h5>
+<script type="text/template" id="thesis-table-row">
 
-  <%= link_to 'Edit', edit_thesis_path(@thesis) %>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>{% title %}</td>
+  <td>{% year %}</td>
+</script>
 
-  <div>
-    <% if @thesis.documentations %>
-      <% @thesis.documentations.each do |document|%>
-        <p>PDF: <%= document.link_to_pdf(document.media_file_name)%></p>
-        <div><%= markdown document.paper if document.paper %></div>
-      <% end %>
-    <% end %>
-  </div>
-  
+<script type="text/template" id="theses-template">
+  <thead>
+    <th>Author</th>
+    <th style="max-width:40px;">Fav</th>
+    <th style="max-width:40px;">Read</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>PDF</th>
+    <th>Text?</th>
+  </thead>
+  <tbody>
+  </tbody>
 </script>

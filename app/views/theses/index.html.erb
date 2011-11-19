@@ -1,49 +1,12 @@
+<script>
+  $(function(){
+    theses = new Theses();
+    thesesTable = new ThesesView({collection: theses});
+    $('#content').append(thesesTable.render().el);
+    theses.reset(<%= @theses.to_json.html_safe %>);
+  });
+</script>
+
 <h1>Listing theses</h1>
-
+<%= render 'backbone_template' %>
 <p><%= link_to 'New Thesis', new_thesis_path %></p>
-
-<table id="theses-table">
-  <thead>
-    <th>Author</th>
-    <th></th>
-    <th>Read?</th>
-    <th>Title</th>
-    <th>Year</th>
-    <th>PDF</th>
-    <th>Text?</th>
-  </thead>
-
-<% @theses.each do |thesis| %>
-  <tr>
-    <td><%= thesis.person.full_name if thesis.person %></td>
-    <td>
-      <%= favorite_star(thesis, current_user) %>
-    </td>
-    <td>
-      <%= thesis.read_status %>
-    </td>
-    <td>
-      <% if thesis.title %>
-      <%= link_to thesis.title, thesis %>
-      <% else %>
-      <%= link_to "<em>n/a</em>".html_safe, thesis %>
-      <% end %>
-      <span class="meta-links">
-        <%= link_to 'edit', edit_thesis_path(thesis) %>
-        <%= link_to 'delete', thesis, confirm: 'Are you sure?', method: :delete, :class => "delete" %>
-      </span>
-    </td>
-    <td><%= thesis.year %></td>
-    <td>
-      <% thesis.documentations.each do |document| %>
-        <%= document.link_to_pdf('view') if document.media_file_name %>
-      <% end %>
-    </td>
-    <td>
-      <% thesis.documentations.each do |document| %>
-        <%= document.paper ? "Yes" : "NO" %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
-</table>
