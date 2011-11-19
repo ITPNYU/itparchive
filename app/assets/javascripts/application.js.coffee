@@ -13,6 +13,7 @@
 jQuery ->
   $('#theses-table, #documentations-table, #favorites-table').dataTable
     "bPaginate": false
+
   _.templateSettings =
     evaluate : /\{\{(.+?)\}\}/g,
-    interpolate : /\{%(.+?)%\}/g
+    interpolate : /\{\{(.+?)\}\}/g

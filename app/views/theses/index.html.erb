@@ -1,9 +1,12 @@
 <script>
   $(function(){
-    theses = new Theses();
-    thesesTable = new ThesesView({collection: theses});
+    window.theses = new Theses();
+    window.thesesTable = new ThesesView({collection: theses});
     $('#content').append(thesesTable.render().el);
-    theses.reset(<%= @theses.to_json.html_safe %>);
+    window.theses.reset(<%= @theses %>);
+    $('#theses-table').dataTable({
+      "bPaginate": false
+    });
   });
 </script>
 

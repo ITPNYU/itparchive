@@ -32,6 +32,14 @@
   });
   
   window.ThesesTableRow = ThesisTableRow.extend({
+    events: {
+      'click .favorite.add': 'addFavorite'
+    },
+
+    addFavorite: function(){
+      this.model.set({favorites: 'yes'});
+      console.log("Selected",this.model);
+    },
   });
   
   window.ThesesView = Backbone.View.extend({

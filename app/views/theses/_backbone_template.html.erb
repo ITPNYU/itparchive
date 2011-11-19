@@ -1,19 +1,23 @@
 <script type="text/template" id="thesis-table-row">
 
+  <td>{{ person.last }}, {{ person.first }}</td>
+  <td>
+    <button class="favorite add"><span class='star'>☆</span></button>
+    <button class="favorite remove"><span class='star'>★</span></button>
+    {{ title }}
+  </td>
+  <td class="align-center">{{ year }}</td>
   <td></td>
   <td></td>
   <td></td>
-  <td>{% title %}</td>
-  <td>{% year %}</td>
 </script>
 
 <script type="text/template" id="theses-template">
   <thead>
-    <th>Author</th>
-    <th style="max-width:40px;">Fav</th>
-    <th style="max-width:40px;">Read</th>
+    <th style="min-width: 120px;">Author</th>
     <th>Title</th>
     <th>Year</th>
+    <th style="max-width:40px;">Read</th>
     <th>PDF</th>
     <th>Text?</th>
   </thead>

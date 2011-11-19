@@ -2,7 +2,7 @@
 module FavoritesHelper
   def favorite_star(item, user)
     favorites_list = []
-    classes = ["favorite-star"]
+    classes = ["favorite"]
     star = "<span class='star'>☆</span>"
     if item.favorites.length > 0
       classes << "has-favorites"
