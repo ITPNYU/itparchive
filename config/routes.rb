@@ -1,5 +1,5 @@
 Itparchive::Application.routes.draw do
-  devise_for :users, :path_names => {:sign_in => "login"}
+  devise_for :users, :path_names => {:sign_in => "login"}, :controllers => { :registrations => "registrations" }
 
   resources :theses do
     resources :people
