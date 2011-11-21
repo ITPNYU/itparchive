@@ -1,17 +1,21 @@
 Itparchive::Application.routes.draw do
   devise_for :users, :path_names => {:sign_in => "login"}, :controllers => { :registrations => "registrations" }
 
-  namespace :user do
-    root :to => "home#dashboard"
-  end
+  root :to => 'home#index'
+  match "/dashboard" => "home#dashboard"
 
   resources :theses do
     resources :people
   end
 
+  resources :notes do
+    collection do
+      get :recent
+    end
+  end
+
   resources :people, :documentations, :favorites
 
-  root :to => 'favorites#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
