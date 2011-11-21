@@ -1,6 +1,10 @@
 Itparchive::Application.routes.draw do
   devise_for :users, :path_names => {:sign_in => "login"}, :controllers => { :registrations => "registrations" }
 
+  namespace :user do
+    root :to => "home#dashboard"
+  end
+
   resources :theses do
     resources :people
   end
