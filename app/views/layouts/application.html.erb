@@ -26,6 +26,9 @@
           <li><%= link_to "Theses", theses_path %></li>
           <li><%= link_to "Documentations", documentations_path %></li>
           <li><%= link_to "Favorites", favorites_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Dashboard", '/dashboard'%></li>
+          <% end %>
         </ul>
       </nav>
     </header>

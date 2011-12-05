@@ -1,0 +1,37 @@
+<section class="dashboard-widget">
+  <h5>Your Notes</h5>
+  <% @your_notes.each do |note| %>
+    <div>
+      <p><%= note.notable %></p>
+      <div><%= note.body %></div>
+    </div>
+  <% end %>
+</section>
+
+<section class="dashboard-widget">
+  <h5>Recent Favorites</h5>
+  <% @recent_favorites.each do |favorite| %>
+  <div>
+    <%= link_to favorite.favoritable, favorite.favoritable %> <%= favorite.user %>
+  </div>
+<% end %>
+</section>
+
+<section class="dashboard-widget">
+  <h5>Recently Read</h5>
+  <% @recently_read.each do |read| %>
+    <div>
+    <%= read.user %>: <%= read.readable %>
+    </div>
+  <% end %>
+</section>
+
+<section class="dashboard-widget">
+  <h5>Recent Notes</h5>
+  <% @recent_notes.each do |note| %>
+    <div>
+      <p><%= note.notable %></p>
+      <div><%= note.body %></div>
+      <p>- <%= note.user %> <em class="meta"><%= time_ago_in_words note.created_at %> ago</em></p>
+  <% end %>
+</section>
