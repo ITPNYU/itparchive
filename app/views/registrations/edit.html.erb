@@ -20,7 +20,9 @@
     <p><i>(we need your current password to confirm your changes)</i></p>
   <%= f.password_field :current_password %></div>
 
-  <div><%= f.submit "Update" %></div>
+  <div class="actions">
+    <button class="submit">Update</button>
+  </div>
 <% end %>
 
 <%= link_to "Back", :back %>

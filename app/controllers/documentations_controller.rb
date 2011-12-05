@@ -10,7 +10,6 @@ class DocumentationsController < ApplicationController
   end
 
   def update
-    puts params.inspect
     @documentation = Documentation.find(params[:id])
     @documentation.update_attributes({
       :physical_location => params[:physical_location],
@@ -18,6 +17,17 @@ class DocumentationsController < ApplicationController
       :has_images => params[:has_images],
       :integrity => params[:integrity]
     })
+
+    if params[:read] == "true"
+      if @documentations.reads.find(:first, :conditions => ["user_id is #{current_user.id}"]).nil?
+        @documentations.reads << Read.new(:user_id => current_user.id)
+      end
+    else
+      if r = @documentations.reads.find(:first, :conditions => ["user_id is #{current_user.id}"])
+        r.destroy
+      end
+    end
+
     @documentation.integrity = params[:integrity]
     if (params[:flag] == "true")
       @documentation.flag = true
