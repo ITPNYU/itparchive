@@ -3,6 +3,7 @@ class Documentation < ActiveRecord::Base
   belongs_to :thesis
   has_many :favorites, :as => :favoritable
   has_many :notes, :as => :notable
+  has_many :reads, :as => :readable
 
   has_attached_file :media, 
                     :storage => :s3, 

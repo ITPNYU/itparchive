@@ -11,34 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111117161556) do
+ActiveRecord::Schema.define(:version => 20111205154450) do
 
   create_table "documentations", :force => true do |t|
-    t.string    "type"
-    t.integer   "condition"
-    t.integer   "thesis_id"
-    t.string    "title"
-    t.text      "paper"
-    t.string    "media_file_name"
-    t.string    "media_content_type"
-    t.integer   "media_file_size"
-    t.timestamp "media_updated_at"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "integrity"
-    t.boolean   "flag"
-    t.string    "physical_location"
-    t.boolean   "read"
-    t.boolean   "has_images"
-    t.string    "medium"
+    t.string   "type"
+    t.integer  "condition"
+    t.integer  "thesis_id"
+    t.string   "title"
+    t.text     "paper"
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "integrity"
+    t.boolean  "flag"
+    t.string   "physical_location"
+    t.boolean  "has_images"
+    t.string   "medium"
   end
 
   create_table "favorites", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "favoritable_type"
-    t.integer  "favoritable_id"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "favoritable_type"
+    t.integer   "favoritable_id"
   end
 
   create_table "media", :force => true do |t|
@@ -48,12 +47,12 @@ ActiveRecord::Schema.define(:version => 20111117161556) do
   end
 
   create_table "notes", :force => true do |t|
-    t.text     "body"
-    t.integer  "user_id"
-    t.string   "notable_type"
-    t.integer  "notable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text      "body"
+    t.integer   "user_id"
+    t.string    "notable_type"
+    t.integer   "notable_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "people", :force => true do |t|
@@ -65,11 +64,19 @@ ActiveRecord::Schema.define(:version => 20111117161556) do
     t.timestamp "updated_at"
   end
 
-  create_table "theses", :force => true do |t|
-    t.string   "title"
-    t.integer  "year"
+  create_table "reads", :force => true do |t|
+    t.string   "readable_type"
+    t.integer  "readable_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "theses", :force => true do |t|
+    t.string    "title"
+    t.integer   "year"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "users", :force => true do |t|
