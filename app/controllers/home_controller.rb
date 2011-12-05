@@ -5,6 +5,9 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    # landing page for logged in users.
+    @your_notes = Note.find(:all, :order => ["created_at DESC"], :conditions => ["user_id is #{current_user.id}"])
+    @recent_favorites = Favorite.recent
+    @recently_read = Read.recent
+    @recent_notes = Note.find(:all, :order => ["created_at DESC"], :limit => 10, :include => [:user, :notable])
   end
 end

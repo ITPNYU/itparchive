@@ -43,4 +43,8 @@ class Documentation < ActiveRecord::Base
     return words[0]
   end
 
+  def to_s
+    title || self.thesis || "Untitled"
+  end
+
 end
