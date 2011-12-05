@@ -21,7 +21,7 @@
   <h5>Recently Read</h5>
   <% @recently_read.each do |read| %>
     <div>
-    <%= read.user %>: <%= read.readable %>
+    <%= read.user %>: <%= link_to read.readable, read.readable.thesis %>
     </div>
   <% end %>
 </section>
