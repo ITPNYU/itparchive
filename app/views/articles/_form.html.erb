@@ -43,7 +43,7 @@
 
 <div class="field">
   <label>Read?</label>
-  <input type="checkbox" name="article[read]" id="article[read]" <%= "checked" if doc.read %>/>
+  <input type="checkbox" name="article[read]" id="article[read]" <%= "checked" if doc.reads.length > 0 %>/>
 </div>
 
 <div class="field">
