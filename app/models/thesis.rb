@@ -16,7 +16,7 @@ class Thesis < ActiveRecord::Base
     read_count = 0
 
     documentations.each do |d|
-      read_count +=1 if d.read?
+      read_count +=1 if d.reads.length > 0
     end
     
     if read_count == 0
