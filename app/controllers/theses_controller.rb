@@ -1,5 +1,6 @@
 class ThesesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
+  caches_action :index
 
   # GET /theses
   # GET /theses.json
