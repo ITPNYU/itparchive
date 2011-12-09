@@ -38,7 +38,7 @@
 
 <div class="field">
   <label>Read?</label>
-  <input type="checkbox" name="documentation[read]" id="documentation[read]" <%= "checked" if doc.reads.find(:first, :conditions => ["user_id is #{current_user.id}"]) %>/>
+  <input type="checkbox" name="documentation[read]" id="documentation[read]" <%= "checked" if doc.reads.find(:first, :conditions => ["user_id is ?", current_user.id]) %>/>
 </div>
 
 <div class="field">
