@@ -39,8 +39,7 @@ class DocumentationsController < ApplicationController
 
     respond_to do |format|
       if @documentation.save
-        format.html { redirect_to "/documentations", notice: 'Thesis was successfully updated.' }
-        format.json { head :ok }
+        format.all { render json: @documentation }
       else
         format.html { render action: "edit" }
         format.json { render json: @documentation.errors, status: :unprocessable_entity }
