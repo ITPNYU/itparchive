@@ -11,7 +11,7 @@
     <tr>
       <td class="orphaned-documentation">
         <span class="file-name" style="width: 100%;display:inline-block"><%= documentation.media.path.split("/").last %></span>
-        <div class="add-thesis-form" id="form-<%= documentation.id %>">
+        <div class="add-thesis-form" data-documentationID="<%= documentation.id %>">
           <%= render 'form', :doc => documentation %>
         </div>
       </td>
