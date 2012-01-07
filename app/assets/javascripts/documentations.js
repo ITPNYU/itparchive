@@ -13,7 +13,7 @@ $(function(){
     else
     {
       form = {
-        id : $theform.find('[name="documentation"]').val(),
+        id : $theform.attr('data-documentationID'),
         integrity : $theform.find('[name="documentation[integrity]"]').val(),
         flag : $theform.find('[name="documentation[flag]"]').val(),
         physical_location : $theform.find('[name="documentation[physical_location]"]').val(),
