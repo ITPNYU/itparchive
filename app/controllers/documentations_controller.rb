@@ -14,7 +14,6 @@ class DocumentationsController < ApplicationController
     @documentation = Documentation.find(params[:id])
     @documentation.update_attributes({
       :physical_location => params[:physical_location],
-      :read => params[:read],
       :has_images => params[:has_images],
       :integrity => params[:integrity]
     })
