@@ -19,11 +19,11 @@ class DocumentationsController < ApplicationController
     })
 
     if params[:read] == "true"
-      if @documentation.reads.find(:first, :conditions => ["user_id is #{current_user.id}"]).nil?
+      if @documentation.reads.find(:first, :conditions => ["user_id = #{current_user.id}"]).nil?
         @documentation.reads << Read.new(:user_id => current_user.id)
       end
     else
-      if r = @documentation.reads.find(:first, :conditions => ["user_id is #{current_user.id}"])
+      if r = @documentation.reads.find(:first, :conditions => ["user_id = #{current_user.id}"])
         r.destroy
       end
     end
