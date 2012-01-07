@@ -14,34 +14,36 @@ class DocumentationsController < ApplicationController
     @documentation = Documentation.find(params[:id])
     @documentation.update_attributes({
       :physical_location => params[:physical_location],
-      :read => params[:read],
       :has_images => params[:has_images],
       :integrity => params[:integrity]
     })
 
     if params[:read] == "true"
-      if @documentations.reads.find(:first, :conditions => ["user_id is #{current_user.id}"]).nil?
-        @documentations.reads << Read.new(:user_id => current_user.id)
+      if @documentation.reads.find(:first, :conditions => ["user_id = #{current_user.id}"]).nil?
+        @documentation.reads << Read.new(:user_id => current_user.id)
       end
     else
-      if r = @documentations.reads.find(:first, :conditions => ["user_id is #{current_user.id}"])
+      if r = @documentation.reads.find(:first, :conditions => ["user_id = #{current_user.id}"])
         r.destroy
       end
     end
 
-    @documentation.integrity = params[:integrity]
     if (params[:flag] == "true")
       @documentation.flag = true
     else
       @documentation.flag = false
     end
-    @documentation.thesis = Thesis.new(params[:thesis])
-    @documentation.thesis.person = Person.new(params[:person])
+
+    @documentation.thesis = Thesis.new({
+      title: params[:thesis][:title],
+      year: params[:thesis][:year],
+      person: Person.new(params[:person]),
+    })
+    @documentation.thesis.save
 
     respond_to do |format|
       if @documentation.save
-        format.html { redirect_to "/documentations", notice: 'Thesis was successfully updated.' }
-        format.json { head :ok }
+        format.all { render json: @documentation}
       else
         format.html { render action: "edit" }
         format.json { render json: @documentation.errors, status: :unprocessable_entity }
