@@ -22,7 +22,7 @@ class DocumentationsController < ApplicationController
       if @documentations.reads.find(:first, :conditions => ["user_id is #{current_user.id}"]).nil?
         @documentations.reads << Read.new(:user_id => current_user.id)
       end
-    else
+    elsif !@documentations.reads.nil?
       if r = @documentations.reads.find(:first, :conditions => ["user_id is #{current_user.id}"])
         r.destroy
       end
