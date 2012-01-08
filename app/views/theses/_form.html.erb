@@ -11,56 +11,34 @@
     </div>
   <% end %>
 
-  <section>
-    <h4>Thesis:</h4>
-    <fieldset>
-      <div class="field">
-        <label>Title:</label>
-        <input type="text" name="thesis[title]" id="thesis_title" size="30" <%= edit_value(@thesis,"title") %>/>
-      </div>
+  <header>
+    <h3>
+      <input placeholder="First Name" type="text" name="person[first]" <%= edit_value(@thesis.person,'first') %>/>
+      <input placeholder="Last Name" type="text" name="person[last]" <%= edit_value(@thesis.person,'last') %>>
+    </h3>
+    <h2>
+      <input placeholder="Title" type="text" name="thesis[title]" id="thesis_title" size="30" <%= edit_value(@thesis,"title") %>/>
+    </h2>
+    <h4>
+      <input placeholder="Year" id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" <%= edit_value(@thesis,'year') %>/>
+    </h4>
+  </header>
 
-      <div class="field">
-        <label>Year:</label>
-        <input id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" <%= edit_value(@thesis,'year') %>/>
-      </div>
-    
-      <div class="field">
-        <% unless @thesis.notes.empty? %>
-          <h5>Existing notes:</h5>
-          <% @thesis.notes.each do |note| %>
-            <div class="note">
-              <blockquote>
-                <%= note.body %>
-              </blockquote>
-              <p>&mdash;<%= note.user %></p>
-            </div>
-          <% end %>
-        <% end %>
-        <label>Add a note:</label>
-        <textarea id="note_body" type="" name="note[body]" cols="50" rows="10"></textarea>
-      </div>
-    </fieldset>
-  </section>
-
-  <section>
-    <h4>Author:</h4>
-    <fieldset>
-      <div class="field">
-        <label>First Name:</label>
-        <input type="text" name="person[first]" <%= edit_value(@thesis.person,'first') %>/>
-      </div>
-
-      <div class="field">
-        <label>Last Name:</label>
-        <input type="text" name="person[last]" <%= edit_value(@thesis.person,'last') %>>
-      </div>
-
-      <div>
-        <label>Graduation Year:</label>
-        <input type="number" name="person[year]" size="30" min="1970" max="<%= Date.today.year %>" <%= edit_value(@thesis.person,'year') %>>
-      </div>
-    </fieldset>
-  </section>
+  <div class="text">
+    <% unless @thesis.notes.empty? %>
+      <h5>Existing notes:</h5>
+      <% @thesis.notes.each do |note| %>
+        <div class="note">
+          <blockquote>
+            <%= note.body %>
+          </blockquote>
+          <p>&mdash;<%= note.user %></p>
+        </div>
+      <% end %>
+    <% end %>
+    <label>Add a note:</label>
+    <textarea id="note_body" type="" name="note[body]" cols="50" rows="5"></textarea>
+  </div>
 
   <section>
     <h4>Documentation(s):</h4>
@@ -78,7 +56,7 @@
       <% end %>
   </section>
   
-  <div class="actions">
+  <div class="actions align-center">
     <button class="submit">Save Thesis</button>
   </div>
 <% end %>

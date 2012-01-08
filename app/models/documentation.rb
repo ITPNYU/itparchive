@@ -13,8 +13,12 @@ class Documentation < ActiveRecord::Base
 
   before_save :default_values
 
-  def read?
-    read
+  def readers
+    output = []
+    reads.each do |read|
+      output << read.user
+    end
+    output
   end
 
   def default_values

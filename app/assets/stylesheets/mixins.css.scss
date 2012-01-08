@@ -5,6 +5,14 @@
   font-family: "Quicksand", sans-serif;
 }
 
+@mixin main-font {
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+
+@mixin serif-font {
+	font-family: "Georgia", serif;
+}
+
 @mixin rounded-corner($radius: 5px) {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -17,6 +25,18 @@
   padding: 0.5em;
   @include rounded-corner(1px);
   outline-color: rgb(170,170,170);
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
 }
 
 .float-left {

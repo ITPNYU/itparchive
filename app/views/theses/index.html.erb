@@ -5,7 +5,7 @@
 <table id="theses-table">
   <thead>
     <th>Author</th>
-    <th></th>
+    <th><span class='star'>★</span></th>
     <th>Read?</th>
     <th>Title</th>
     <th>Year</th>
@@ -17,7 +17,7 @@
   <tr>
     <td><%= thesis.person.full_name if thesis.person %></td>
     <td>
-      <%= favorite_star(thesis, current_user) %>
+      <%= star thesis.favoritors, thesis if user_signed_in? %>
     </td>
     <td>
       <%= thesis.read_status %>

@@ -1,16 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h4><%= @thesis.title %> (<%= @thesis.year %>) <%= favorite_star(@thesis, current_user) %></h4>
-<h5><%= @thesis.person.full_name if @thesis.person %></h5>
+<% if user_signed_in? %>
+<div class="meta">
+  <%= link_to 'Edit', edit_thesis_path(@thesis) %>
+</div>
+<% end %>
 
-<%= link_to 'Edit', edit_thesis_path(@thesis) %>
+<header>
+  <h3><%= @thesis.person.full_name if @thesis.person %></h3>
+  <h2><%= @thesis.title %></h2>
+  <h4><%= @thesis.year %></h4>
+  <h4><%= star @thesis.favoritors, @thesis if user_signed_in? %></h4>
+</header>
 
-<div>
+<div class="text">
   <% if @thesis.documentations %>
     <% @thesis.documentations.each do |document|%>
-      <p>PDF: <%= document.link_to_pdf(document.media_file_name)%></p>
-      <div><%= markdown document.paper if document.paper %></div>
+    <p class="align-center">
+      <%= document.link_to_pdf("Download PDF")%>
+      <% if user_signed_in? %>
+        <%= "<span class='negative'>⚑</span>".html_safe if document.flag %>
+        <%= "<span title='has images'>✦</span>".html_safe if document.has_images %>
+        <%= read_status document.readers, document %>
+      <% end %>
+    </p>
+    <%= markdown document.paper if document.paper %>
     <% end %>
+  <% end %>
+</div>
+
+<div class="notes">
+  <% @thesis.notes.each do |note| %>
+    <h6><%= note.user %></h6>
+    <div>
+      <%= markdown note.body %>
+    </div>
   <% end %>
 </div>
 
