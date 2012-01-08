@@ -35,14 +35,10 @@
     </td>
     <td><%= thesis.year %></td>
     <td>
-      <% thesis.documentations.each do |document| %>
-        <%= document.link_to_pdf('view') if document.media_file_name %>
-      <% end %>
+      <%= check_mark thesis.has_media? %>
     </td>
     <td>
-      <% thesis.documentations.each do |document| %>
-        <%= document.paper ? "Yes" : "NO" %>
-      <% end %>
+      <%= check_mark thesis.has_text? %>
     </td>
   </tr>
 <% end %>
