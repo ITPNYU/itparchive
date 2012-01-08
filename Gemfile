@@ -19,7 +19,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'redcarpet', '< 2.0' # Markdown
+gem 'redcarpet' # Markdown
 
 # Users
 gem 'devise'
