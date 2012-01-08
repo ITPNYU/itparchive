@@ -12,8 +12,12 @@ class Thesis < ActiveRecord::Base
     title
   end
 
-  def favorite_status
-    
+  def favoritors
+    output = []
+    favorites.each do |favorite|
+      output << favorite.user
+    end
+    output
   end
 
   def has_media?

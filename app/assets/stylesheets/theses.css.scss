@@ -92,3 +92,48 @@
     color: $red;
   }
 }
+
+#content {
+	header {
+		background: none;
+		margin: 0 0 1em;
+
+		* {
+			padding: 0;
+			text-align: center;
+		}
+		h3, h4 {
+			@include main-font;
+		}
+		h2 {
+			margin: 0.1em 0 0.1em;
+		}
+		h3 {
+			font-size: 190%;
+			line-height: 1.3em;
+			margin: 0;
+		}
+		h4 {
+			color: $dark-gray;
+			font-size: 125%;
+			font-weight: normal;
+			margin: 0 0 0.4em;
+		}
+	}
+	
+	.text {
+		border-top: 1px solid $slate;
+		font-size: 150%;
+		line-height: 1.8em;
+		padding: 1em 2em;
+		margin: 0 auto;
+		width: 35em;
+
+		* {
+			@include serif-font;
+		}
+		p {
+			margin: 0 0 1em;
+		}
+	}
+}
