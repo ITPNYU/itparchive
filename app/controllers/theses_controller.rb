@@ -43,21 +43,18 @@ class ThesesController < ApplicationController
   # POST /theses
   # POST /theses.json
   def create
-    @thesis = Thesis.new(params[:thesis]) #{:attribute => "value", :attribute2 => 1  }
-    if params[:article] != nil
-      params[:article][:paper] = params[:article][:paper].tempfile.readline if params[:article][:paper]
-      @thesis.documentations << Article.new(params[:article]) # params = {:thesis => {...}, :article => {:media => {...}}}
-    end
-    if params[:media] != nil
-      @thesis.documentations << Media.new(params[:media]) # params = {:thesis => {...}, :media => {:media => {...}}}
-    end
+
+    # Set the note's user to the current user.
+    # Authentication is required for this action so
+    # we don't need to check that current_user != nil.
+    params[:note][:user] = current_user
+
+    # Create a new thesis
+    @thesis = Thesis.new(params[:thesis])
+    # Attach the person
     @thesis.person = Person.new(params[:person])
-    
-    if params[:note]
-      note = Note.new(params[:note])
-      note.user = current_user
-      @thesis.notes <<  note
-    end
+    # attach the note if the body field has something other than whitespace.
+    @thesis.notes << Note.new(params[:note]) if params[:note][:body].strip.length > 0
 
     respond_to do |format|
       if @thesis.save
