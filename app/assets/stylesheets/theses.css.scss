@@ -84,6 +84,10 @@
   font-size: 0.9em;
   visibility: hidden;
 
+  &.visible {
+	  visibility: visible;
+  }
+
   a {
     color: $orange;
   }

@@ -137,8 +137,9 @@ textarea {
 }
 .documentation-form {
   padding: 1em;
-  margin: 0 0 1em;
+  margin: 0 auto 1em;
   background: transparentize($slate,0.7);
+  width: 35em;
 }
 
 .edit_thesis,
@@ -146,21 +147,29 @@ textarea {
 	input[type=text],
 	input[type=number],
 	textarea {
+		font-family: inherit;
 		font-size: inherit;
 		color: inherit;
 		font-family: inherit;
 		line-height: inherit;
 		height: auto;
-		border: 1px dotted $slate;
-		text-align: center;
-		width: 100%;
 	}
-	textarea {
-		@include serif-font;
-		text-align: left;
-	}
-	.first,
-	.last {
-		width: 50%;
+	
+	
+	header {
+		input[type=text],
+		input[type=number],
+		textarea {
+			border: 1px dotted $slate;
+			text-align: center;
+			width: 100%;
+		}
+		textarea {
+			text-align: left;
+		}
+		.first,
+		.last {
+			width: 50%;
+		}
 	}
 }

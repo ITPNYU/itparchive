@@ -2,7 +2,6 @@
   <% if @thesis.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@thesis.errors.count, "error") %> prohibited this thesis from being saved:</h4>
-
       <ul>
       <% @thesis.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -12,19 +11,24 @@
   <% end %>
 
   <header>
+
     <h3>
       <input placeholder="First Name" type="text" name="person[first]" <%= edit_value(@thesis.person,'first') %>/>
       <input placeholder="Last Name" type="text" name="person[last]" <%= edit_value(@thesis.person,'last') %>>
     </h3>
+
     <h2>
       <input placeholder="Title" type="text" name="thesis[title]" id="thesis_title" size="30" <%= edit_value(@thesis,"title") %>/>
     </h2>
+
     <h4>
       <input placeholder="Year" id="thesis_year" type="number" name="thesis[year]" size="30" max="<%= Date.today.year %>" min="1970" <%= edit_value(@thesis,'year') %>/>
     </h4>
+
   </header>
 
   <div class="text">
+
     <% unless @thesis.notes.empty? %>
       <h5>Existing notes:</h5>
       <% @thesis.notes.each do |note| %>
@@ -36,25 +40,25 @@
         </div>
       <% end %>
     <% end %>
-    <label>Add a note:</label>
+
+    <label>Add A Note:</label>
     <textarea id="note_body" type="" name="note[body]" cols="50" rows="5"></textarea>
+
   </div>
 
-  <section>
-    <h4>Documentation(s):</h4>
-      <% if @thesis.documentations.length >= 1 %>
-        <% @thesis.documentations.each do |d| %>
-        <fieldset>
-          <%= render "#{d.type.downcase.pluralize}/form", :doc => d %>
-        </fieldset>
-        <% end %>
-      <% else %>
-        <fieldset>
-        <%= render "articles/form" %>
-        <%= render "media/form" %>
-        </fieldset>
+  <h5 class="align-center">Documentation(s):</h5>
+    <% if @thesis.documentations.length >= 1 %>
+      <% @thesis.documentations.each do |d| %>
+      <fieldset>
+        <%= render "#{d.type.downcase.pluralize}/form", :doc => d %>
+      </fieldset>
       <% end %>
-  </section>
+    <% else %>
+      <fieldset>
+      <%= render "articles/form" %>
+      <%= render "media/form" %>
+      </fieldset>
+    <% end %>
   
   <div class="actions align-center">
     <button class="submit">Save Thesis</button>
