@@ -22,7 +22,7 @@ module ThesesHelper
       end
     end
 
-    link_to("#{star}<ul class='favorites-list'>#{favorites_list.join("")}</ul>".html_safe, "##{thesis.id}", :class => classes)
+    link_to("#{star}<ul class='favorites-list'>#{favorites_list.join("")}</ul>".html_safe, "##{thesis.id}", :class => classes, :title => thesis.class)
   end
 
 end
