@@ -6,6 +6,7 @@ module ThesesHelper
 
   def star(favoritors, thesis)
     favorites_list = []
+    current_user_favorite_id = nil
     classes = ["favorite-star"]
     star = "<span class='star'>☆</span>"
     if favoritors.length > 0
@@ -17,12 +18,13 @@ module ThesesHelper
       if user == current_user
         favorites_list << "<li class='current-user'>You</li>"
         classes << "favorited"
+        current_user_favorite_id = user.favorites.where("favoritable_id = ?", thesis.id).first.id
       else
         favorites_list << "<li>#{user}</li>"
       end
     end
 
-    link_to("#{star}<ul class='favorites-list'>#{favorites_list.join("")}</ul>".html_safe, "##{thesis.id}", :class => classes, :title => thesis.class)
+    link_to("#{star}<ul class='favorites-list'>#{favorites_list.join("")}</ul>".html_safe, "##{thesis.id}", :class => classes, :'data-favoritable-type' => thesis.class, :'data-id' => current_user_favorite_id)
   end
 
 end
