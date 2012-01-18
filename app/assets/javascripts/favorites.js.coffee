@@ -1,15 +1,14 @@
 removeFavorite = ($favorite) ->
   id = $favorite.data 'id'
+  $favorite.removeClass 'favorited'
+  if $favorite.find('li').length <= 1
+    $favorite.find('.current-user').remove()
+    $favorite.removeClass('has-favorites')
+  else
+    $favorite.find('.current-user').remove()
   $.ajax
     url : '/favorites/'+id
     type : 'DELETE'
-    success : (response) ->
-      $favorite.removeClass 'favorited'
-      if $favorite.find('li').length <= 1
-        $favorite.find('.current-user').remove()
-        $favorite.removeClass('has-favorites')
-      else
-        $favorite.find('.current-user').remove()
 
 addFavorite = ($favorite) ->
   $favorite
