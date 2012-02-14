@@ -11,6 +11,10 @@
 </div>
 <% end %>
 
+<div class="abstract">
+  <%= markdown @thesis.abstract %>
+</div>
+
 <div class="text">
   <% if @thesis.documentations %>
     <% @thesis.documentations.each do |document|%>
