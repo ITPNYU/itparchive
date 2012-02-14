@@ -125,7 +125,8 @@
 		}
 	}
 	
-	.text {
+	.text,
+  .abstract {
 		border-top: 1px solid $slate;
 		font-size: 150%;
 		line-height: 1.8em;
@@ -140,4 +141,13 @@
 			margin: 0 0 1em;
 		}
 	}
+
+  .abstract {
+		@include serif-font;
+    border-top: none;
+    font-style: italic;
+    p {
+      font-size: ms(1, $font-size 120px, $golden);
+    }
+  }
 }

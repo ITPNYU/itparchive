@@ -15,7 +15,7 @@
   <% if @thesis.documentations %>
     <% @thesis.documentations.each do |document|%>
     <p class="align-center">
-      <%= document.link_to_pdf("Download PDF")%>
+      <%= document.link_to_pdf("View PDF")%>
       <% if user_signed_in? %>
         <%= "<span class='negative'>⚑</span>".html_safe if document.flag %>
         <%= "<span title='has images'>✦</span>".html_safe if document.has_images %>

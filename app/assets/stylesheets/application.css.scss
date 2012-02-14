@@ -19,8 +19,10 @@ $link: rgba(17,114,228,1);
 
 @import "reset";
 @import "mixins";
+@import "modular-scale";
 @import "zindex";
 @import "form";
+
 html {
   margin: 0;}
 
