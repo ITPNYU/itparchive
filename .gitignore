@@ -5,4 +5,4 @@ tmp/
 .sass-cache/
 config/database.yml
 *.dat
-config/s3_credentials.yml
+s3_env
