@@ -135,12 +135,8 @@ DEPENDENCIES
   paperclip (~> 2.4)
   pg
   rails (= 3.1.0)
-<<<<<<< HEAD
-  redcarpet
-=======
   rake (= 0.8.7)
   redcarpet (< 2.0)
->>>>>>> github
   sass-rails (~> 3.1.0)
   sqlite3
   uglifier
