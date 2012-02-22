@@ -31,27 +31,32 @@
   <% end %>
 </div>
 
-<% if user_signed_in? %>
+
 <a name="notes"></a>
 <div class="notes" data-current-user="<%= current_user %>">
   <ul>
   <% @thesis.notes.each do |note| %>
+  <% if note.public || user_signed_in? %>
     <li data-id="<%= note.id %>">
       <h6><%= note.user %></h6>
       <div>
         <%= markdown note.body %>
       </div>
-      <% if note.user_id == current_user.id %>
-      <p class="delete-note negative">Delete Note</p>
+      <p><em><%= note.is_public %></em>
+      <% if user_signed_in? and note.user_id == current_user.id %>
+        <span class="delete-note negative">Delete Note</span>
       <% end %>
+      </p>
     </li>
   <% end %>
+  <% end %>
   </ul>
+<% if user_signed_in? %>
   <div class="new-note" data-notable-type="Thesis" data-notable-id="<%= @thesis.id %>" data-user-id="<%= current_user.id %>">
     <button class="add-note-button"><span class="pictos">+</span> Add A Note</button>
   </div>
-</div>
 <% end %>
+</div>
 
 <script type="text/template" id="note-template">
   <li data-id="{{ id }}">
@@ -63,6 +68,7 @@
 
 <script type="text/template" id="add-note-template">
   <textarea name="body"></textarea>
+  <label><input type="checkbox"></input> Make Public</label>
   <button class="submit">Save Note</button>
 </script>
 

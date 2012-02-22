@@ -145,6 +145,10 @@ header {
   background-color: transparentize($slate,0.8);
 }
 
+.delete-note {
+  cursor: pointer;
+}
+
 @import "favorites";
 @import "theses";
 @import "home";

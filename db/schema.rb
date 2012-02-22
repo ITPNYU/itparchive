@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214154412) do
+ActiveRecord::Schema.define(:version => 20120222220403) do
 
   create_table "documentations", :force => true do |t|
     t.string    "type"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20120214154412) do
     t.integer   "notable_id"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.boolean   "public"
   end
 
   create_table "people", :force => true do |t|

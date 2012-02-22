@@ -24,7 +24,8 @@ jQuery ->
         body: $noteForm.find('textarea').val().replace(/^\s+|\s+$/g, '')
         notable_type : $noteForm.data('notable-type')
         notable_id : $noteForm.data('notable-id')
-        user_id : $noteForm.data('user-id')      
+        user_id : $noteForm.data('user-id')
+        public : $noteForm.find('input[type="checkbox"]').is(':checked')
       }
     }
     if data.note.body.length == 0
