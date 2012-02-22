@@ -28,41 +28,28 @@
   </header>
 
   <div class="abstract">
-    <textarea id="thesis_abstract" placeholder="Abstract..."><%= @thesis.abstract %></textarea>
+    <h6>Abstract:</h6>
+    <textarea id="thesis_abstract" placeholder="Abstract..." name="thesis[abstract]"><%= @thesis.abstract %></textarea>
   </div>
 
   <div class="text">
-
     <% unless @thesis.notes.empty? %>
       <h5>Existing notes:</h5>
+      <ul class="zebra">
       <% @thesis.notes.each do |note| %>
-        <div class="note">
+        <li class="note">
           <blockquote>
             <%= note.body %>
           </blockquote>
           <p>&mdash;<%= note.user %></p>
-        </div>
+        </li>
       <% end %>
+      </ul>
     <% end %>
 
     <label>Add A Note:</label>
     <textarea id="note_body" type="" name="note[body]" cols="50" rows="5"></textarea>
-
   </div>
-
-  <h5 class="align-center">Documentation(s):</h5>
-    <% if @thesis.documentations.length >= 1 %>
-      <% @thesis.documentations.each do |d| %>
-      <fieldset>
-        <%= render "#{d.type.downcase.pluralize}/form", :doc => d %>
-      </fieldset>
-      <% end %>
-    <% else %>
-      <fieldset>
-      <%= render "articles/form" %>
-      <%= render "media/form" %>
-      </fieldset>
-    <% end %>
   
   <div class="actions align-center">
     <button class="submit">Save Thesis</button>

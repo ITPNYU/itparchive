@@ -43,18 +43,15 @@ class ThesesController < ApplicationController
   # POST /theses
   # POST /theses.json
   def create
-
-    # Set the note's user to the current user.
-    # Authentication is required for this action so
-    # we don't need to check that current_user != nil.
-    params[:note][:user] = current_user
-
     # Create a new thesis
     @thesis = Thesis.new(params[:thesis])
-    # Attach the person
+    
+    # Attach the person, we can create a new Person
+    # because you only graduate from ITP once and so only
+    # have one thesis. Any identical names should be assumed
+    # to be different people.
     @thesis.person = Person.new(params[:person])
-    # attach the note if the body field has something other than whitespace.
-    @thesis.notes << Note.new(params[:note]) if params[:note][:body].strip.length > 0
+    @thesis.add_note(params[:note], current_user)
 
     respond_to do |format|
       if @thesis.save
@@ -71,6 +68,8 @@ class ThesesController < ApplicationController
   # PUT /theses/1.json
   def update
     @thesis = Thesis.find(params[:id])
+
+    @thesis.add_note(params[:note], current_user)
 
     respond_to do |format|
       if @thesis.update_attributes(params[:thesis])

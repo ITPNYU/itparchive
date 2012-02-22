@@ -8,6 +8,10 @@ class Thesis < ActiveRecord::Base
   has_many :favorites, :as => :favoritable
   has_many :notes, :as => :notable
   
+  def add_note( note_params, user )
+    notes << Note.new(:body => note_params[:body].strip, :user => user) if note_params[:body].strip.length > 0
+  end
+  
   def to_s
     title
   end

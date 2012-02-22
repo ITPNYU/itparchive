@@ -1,7 +1,10 @@
+$type-base: 8px;
+$type-text: 13px;
+$type-alt: 10px;
+
 $line: 24;
 $column: 100% / 18;
-$font-size: 13;
-$em: $font-size * 1.2;
+$em: $type-base * 1.2;
 $golden: 1.618;
 
 // COLORS
@@ -54,35 +57,37 @@ a {
   }}
 
 h1,h2,h3,h4,h5,h6 {
-  @include header-font;}
+  @include header-font;
+}
 
 h1 {
-  font-size: #{$font-size*$golden*2}px;
-  line-height: 1.8em;
+  font-size: ms(4, $type-alt, $golden);
+  line-height: ms(4, $type-base, $golden);
   margin: 0.25em 0 0.75em;}
 
 h2 {
-  font-size: 3.526em;
-  line-height: 1.7em;
+  font-size: ms(4, $type-base, $golden);
+  line-height: ms(5, $type-base, $golden);
   margin: 0.25em 0 0.75em;}
 
 h3 {
-  font-size: 2.618em;
-  line-height: 1.6em;
+  font-size: ms(3, $type-base, $golden);
+  line-height: ms(4, $type-base, $golden);
   margin: 0.35em;}
 
 h4 {
-  font-size: 2.179em;
-  line-height: 1.2em;
+  font-size: ms(2, $type-base, $golden);
+  line-height: ms(3, $type-base, $golden);
   margin: 0.25em 0;}
 
 h5 {
-  font-size: 1.618em;
-  line-height: 1em;}
+  font-size: ms(2, $type-alt, $golden);
+  line-height: ms(3, $type-alt, $golden);}
 
 h6 {
-  font-size: 1.347em;
-  line-height: 1em;}
+  font-size: ms(1, $type-alt, $golden);
+  line-height: ms(1, $type-alt, $golden);
+}
 
 em {
   font-style: italic;}
@@ -109,7 +114,7 @@ header {
   width: #{$column*16};
 
   h1 {
-    font-size: #{$font-size*$golden}px;}
+    font-size: ms(1, $type-text, $golden);}
 
   #user-nav {
     @extend .float-right;}
@@ -138,6 +143,11 @@ header {
   
   .alert {
     background-color: red;}}
+
+.zebra>*:nth-child(2n) {
+  background-color: transparentize($slate,0.8);
+}
+
 
 @import "favorites";
 @import "theses";

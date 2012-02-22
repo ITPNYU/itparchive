@@ -128,11 +128,11 @@
 	.text,
   .abstract {
 		border-top: 1px solid $slate;
-		font-size: 150%;
-		line-height: 1.8em;
+    font-size: ms(1, $type-text, $golden);
+		line-height: ms(2, $type-text, $golden);
 		padding: 1em 2em;
 		margin: 0 auto;
-		width: 35em;
+		width: 40em;
 
 		* {
 			@include serif-font;
@@ -146,8 +146,6 @@
 		@include serif-font;
     border-top: none;
     font-style: italic;
-    p {
-      font-size: ms(1, $font-size 120px, $golden);
-    }
+    font-size: ms(1, $type-alt, $golden);
   }
 }
