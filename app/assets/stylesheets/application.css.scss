@@ -41,9 +41,6 @@ body {
   top: 0;
   width: 100%;}
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;}
-
 pre {
   background-color: #eee;
   padding: 10px;
@@ -148,7 +145,10 @@ header {
   background-color: transparentize($slate,0.8);
 }
 
-
 @import "favorites";
 @import "theses";
 @import "home";
+
+.pictos {
+  font-family: Pictos;
+}

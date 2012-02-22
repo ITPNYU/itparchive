@@ -1,36 +1,22 @@
+button {
+  background-color: rgb(26,96,178);
+  border: 1px solid rgb(26,69,127);
+  cursor: pointer;
+  @include rounded-corner;
+  -webkit-box-shadow: inset 0 0 2px rgba(255,255,255,0.3);
+  -webkit-text-shadow: 0 1px 0 rgb(128,128,128);
+  color: rgb(255,255,255);
+  font-size: 1.309em;
+  padding: 0.25em 0.85em;
+    
+  &:hover {
+    background-color: rgb(20,90,165);
+  }
+}
+
 form {
   overflow: auto;
   width: 100%;
-
-  button {
-    background-color: rgb(26,96,178);
-    border: 1px solid rgb(26,69,127);
-    cursor: pointer;
-    @include rounded-corner;
-    -webkit-box-shadow: inset 0 0 2px rgba(255,255,255,0.3);
-    -webkit-text-shadow: 0 1px 0 rgb(128,128,128);
-    color: rgb(255,255,255);
-    font-size: 1.309em;
-    padding: 0.25em 0.85em;
-    
-    &:hover {
-      background-color: rgb(20,90,165);
-    }
-  }
-
-  input {
-    @include input-style;
-
-    &[type="text"] {
-      min-width: 20em;
-    }
-  }
-
-  label {
-    display: block;
-    font-weight: bold;
-    margin: 0.75em 0 0.25em;
-  }
 
   section {
     border-bottom: 1px solid black;
@@ -50,18 +36,31 @@ form {
       margin-left: #{$column*4};
     }
   }
-
-  textarea {
-    @include input-style;
-    clear: both;
-    display: block;
-    width: 90%;
+  
+  .input {
+    margin-left: 150px;
   }
+  
+}
 
-  .field {
-    margin: 0 0 10px 0;
+input {
+  @include input-style;
+
+  &[type="text"] {
+    min-width: 20em;
   }
 }
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 0.75em 0 0.25em;
+}
+
+.field {
+  margin: 0 0 10px 0;
+}
+
 
 label,
 input,
@@ -72,14 +71,21 @@ textarea {
   font-weight: normal;
   line-height: normal;
 }
-form .input {
-  margin-left: 150px;
+
+
+textarea {
+  @include input-style;
+  clear: both;
+  display: block;
+  width: 90%;
 }
+
 input[type=checkbox], input[type=radio] {
   cursor: pointer;
 }
+
 input,
-textarea,
+/*textarea,*/
 select {
   display: inline-block;
   width: 210px;
@@ -93,6 +99,7 @@ select {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+
 select {
   padding: initial;
 }
