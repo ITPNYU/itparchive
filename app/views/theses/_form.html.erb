@@ -31,25 +31,6 @@
     <h6>Abstract:</h6>
     <textarea id="thesis_abstract" placeholder="Abstract..." name="thesis[abstract]"><%= @thesis.abstract %></textarea>
   </div>
-
-  <div class="text">
-    <% unless @thesis.notes.empty? %>
-      <h5>Existing notes:</h5>
-      <ul class="zebra">
-      <% @thesis.notes.each do |note| %>
-        <li class="note">
-          <blockquote>
-            <%= note.body %>
-          </blockquote>
-          <p>&mdash;<%= note.user %></p>
-        </li>
-      <% end %>
-      </ul>
-    <% end %>
-
-    <label>Add A Note:</label>
-    <textarea id="note_body" type="" name="note[body]" cols="50" rows="5"></textarea>
-  </div>
   
   <div class="actions align-center">
     <button class="submit">Save Thesis</button>

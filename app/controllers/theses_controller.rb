@@ -51,7 +51,6 @@ class ThesesController < ApplicationController
     # have one thesis. Any identical names should be assumed
     # to be different people.
     @thesis.person = Person.new(params[:person])
-    @thesis.add_note(params[:note], current_user)
 
     respond_to do |format|
       if @thesis.save
@@ -68,8 +67,6 @@ class ThesesController < ApplicationController
   # PUT /theses/1.json
   def update
     @thesis = Thesis.find(params[:id])
-
-    @thesis.add_note(params[:note], current_user)
 
     respond_to do |format|
       if @thesis.update_attributes(params[:thesis])
