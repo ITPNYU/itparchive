@@ -12,7 +12,7 @@
 <% end %>
 
 <div class="abstract">
-  <%= markdown @thesis.abstract %>
+  <%= markdown @thesis.abstract if @thesis.abstract%>
 </div>
 
 <div class="text">
@@ -21,8 +21,8 @@
     <p class="align-center">
       <%= document.link_to_pdf("View PDF")%>
       <% if user_signed_in? %>
-        <%= "<span class='negative'>⚑</span>".html_safe if document.flag %>
-        <%= "<span title='has images'>✦</span>".html_safe if document.has_images %>
+      <%= "<span class='negative pictos'>^</span>".html_safe if document.flag %>
+        <%= "<span class='pictos' title='has images'>P</span>".html_safe if document.has_images %>
         <%= read_status document.readers, document %>
       <% end %>
     </p>
@@ -31,14 +31,39 @@
   <% end %>
 </div>
 
+<% if user_signed_in? %>
 <a name="notes"></a>
-<div class="notes">
+<div class="notes" data-current-user="<%= current_user %>">
+  <ul>
   <% @thesis.notes.each do |note| %>
-    <h6><%= note.user %></h6>
-    <div>
-      <%= markdown note.body %>
-    </div>
+    <li data-id="<%= note.id %>">
+      <h6><%= note.user %></h6>
+      <div>
+        <%= markdown note.body %>
+      </div>
+      <% if note.user_id == current_user.id %>
+      <p class="delete-note negative">Delete Note</p>
+      <% end %>
+    </li>
   <% end %>
+  </ul>
+  <div class="new-note" data-notable-type="Thesis" data-notable-id="<%= @thesis.id %>" data-user-id="<%= current_user.id %>">
+    <button class="add-note-button"><span class="pictos">+</span> Add A Note</button>
+  </div>
 </div>
+<% end %>
+
+<script type="text/template" id="note-template">
+  <li data-id="{{ id }}">
+    <h6>{{ user.username }}</h6>
+    <div>{{ body }}</div>
+    <p class="delete-note negative">Delete Note</p>
+  </li>
+</script>
+
+<script type="text/template" id="add-note-template">
+  <textarea name="body"></textarea>
+  <button class="submit">Save Note</button>
+</script>
 
 <%= link_to 'Back', theses_path %>

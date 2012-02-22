@@ -10,6 +10,19 @@ class NotesController < ApplicationController
     end
   end
 
+  def create
+    @note = Note.new(params[:note])
+    @note.save
+    render json: @note.to_json(include: :user)
+  end
+
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+    
+    render json: {head: 'ok'}
+  end
+
   def recent
     @notes = Note.find(:all, :order => "updated_at desc", :limit => 5)
     

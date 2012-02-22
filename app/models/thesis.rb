@@ -50,9 +50,9 @@ class Thesis < ActiveRecord::Base
     if read_count == 0
       return "-"
     elsif read_count < documentations.length
-      return "○".html_safe
+      return "<span class='pictos'>E</span>".html_safe
     else
-      return "●".html_safe
+      return "<span class='pictos'>E</span>".html_safe
     end
   end
 

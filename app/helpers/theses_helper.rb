@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module ThesesHelper
   def check_mark(check_value)
-    (check_value ? "<span class='positive'>✔</span>" : "<span class='negative'>✘</span>").html_safe
+    (check_value ? "<span class='pictos positive'>3</span>" : "<span class='pictos negative'>*</span>").html_safe
   end
 
   def star(favoritors, thesis)
