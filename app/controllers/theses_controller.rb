@@ -68,6 +68,8 @@ class ThesesController < ApplicationController
   def update
     @thesis = Thesis.find(params[:id])
 
+    @thesis.person.update_attributes(params[:person])
+
     respond_to do |format|
       if @thesis.update_attributes(params[:thesis])
         format.html { redirect_to @thesis, notice: 'Thesis was successfully updated.' }
