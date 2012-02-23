@@ -1,10 +1,45 @@
 // LAYOUT
 //______________________________________________________
+.documentations-list,
+.notes {
+  margin: 0 auto 1em;
+  padding: 1em;
+  width: 59em;
+}
 
+.documentations-list {
+  background-color: #efefef;
+
+  li {
+    border: 1px solid $slate;
+    background-color: $white;
+    margin: 0 0 1em;
+    overflow-y: auto;
+    padding: 0.8em;
+    &:hover {
+      background-color: $yellow;
+    }
+  }
+}
+
+.text,
+.abstract {
+  border-top: 1px solid $slate;
+  font-size: ms(1, $type-text, $golden);
+  line-height: ms(2, $type-text, $golden);
+  padding: 1em 2em;
+  margin: 0 auto;
+  width: 40em;
+
+  @include serif-font;
+
+  p {
+    margin: 0 0 1em;
+  }
+}
 
 // TYPE
 //______________________________________________________
-
 .align-center {
 	text-align: center;
 }
@@ -15,6 +50,11 @@
 
 .align-right {
 	text-align: right;
+}
+
+.description {
+  color: $dark-gray;
+  font-style: italic;
 }
 
 .float-left {
@@ -51,8 +91,12 @@
   // Only display these links if the mouse is hovering
   // on the model.
   color: $orange;
-  font-size: 0.9em;
   visibility: hidden;
+  
+  &,
+  button {
+    font-size: 0.9em;
+  }
 
   &.visible {
 	  visibility: visible;
@@ -64,6 +108,25 @@
 
   a.delete {
     color: $red;
+  }
+
+  button {
+    display: inline-block;
+    float: right;
+  }
+
+  button {
+    background: $orange;
+    border-color: darken($orange, 10%);
+    
+    &:hover {
+      background: lighten($orange, 10%);
+    }
+  }
+
+  button.delete {
+    background: $red;
+    border-color: darken($red, 10%);
   }
 }
 

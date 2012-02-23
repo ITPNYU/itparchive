@@ -38,7 +38,7 @@
   }
 
   tbody tr:hover {
-    background-color: rgba(243,216,40,0.7);
+    background-color: $yellow;
     -webkit-transition: all 0.3s ease-in-out;
   }
 }
@@ -99,22 +99,6 @@
 			font-size: 125%;
 			font-weight: normal;
 			margin: 0 0 0.4em;
-		}
-	}
-	
-	.text,
-  .abstract {
-		border-top: 1px solid $slate;
-    font-size: ms(1, $type-text, $golden);
-		line-height: ms(2, $type-text, $golden);
-		padding: 1em 2em;
-		margin: 0 auto;
-		width: 40em;
-
-		@include serif-font;
-
-		p {
-			margin: 0 0 1em;
 		}
 	}
 

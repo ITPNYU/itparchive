@@ -16,27 +16,30 @@
 </div>
 
 <div class="text">
-  <% if @thesis.documentations %>
-    <% @thesis.documentations.each do |document|%>
-    <p class="align-center">
-      <%= document.link_to_pdf("View PDF")%>
-      <% if user_signed_in? %>
-      <%= "<span class='negative pictos'>^</span>".html_safe if document.flag %>
-        <%= "<span class='pictos' title='has images'>P</span>".html_safe if document.has_images %>
-        <%= read_status document.readers, document %>
-      <% end %>
-    </p>
-    <%= markdown document.paper if document.paper %>
-    <% end %>
-  <% end %>
-</div>
 
+  <% (@thesis.documentations || []).each do |documentation|%>
+
+  <span class="title"><%= documentation %></span>
+  <span class="description"><%= documentation.type %></span>
+
+  <%= "<span class='negative pictos'>^</span>".html_safe if documentation.flag %>
+  <%= "<span class='pictos' title='has images'>P</span>".html_safe if documentation.has_images %>
+  <%# = read_status documentation.readers, documentation %>
+  
+  <p class="align-center">
+    <%= documentation.link_to_pdf("View PDF")%>
+  </p>
+  <%= markdown documentation.paper if documentation.paper %>
+  <% end %>
+
+</div>
 
 <a name="notes"></a>
 <div class="notes" data-current-user="<%= current_user %>">
+
   <ul>
-  <% @thesis.notes.each do |note| %>
-  <% if note.public || user_signed_in? %>
+    <% @thesis.notes.each do |note| %>
+    <% if note.public || user_signed_in? %>
     <li data-id="<%= note.id %>">
       <h6><%= note.user %></h6>
       <div>
@@ -48,15 +51,24 @@
       <% end %>
       </p>
     </li>
-  <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
   </ul>
-<% if user_signed_in? %>
+
+  <% if user_signed_in? %>
   <div class="new-note" data-notable-type="Thesis" data-notable-id="<%= @thesis.id %>" data-user-id="<%= current_user.id %>">
     <button class="add-note-button"><span class="pictos">+</span> Add A Note</button>
   </div>
-<% end %>
+  <% end %>
+
 </div>
+
+<script type="text/template" id="article-template">
+  <div class="text">
+  <p class="align-center">{{ pdf }}</p>
+  {{ text }}
+  </div>
+</script>
 
 <script type="text/template" id="note-template">
   <li data-id="{{ id }}">

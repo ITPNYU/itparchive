@@ -32,6 +32,63 @@
     <textarea id="thesis_abstract" placeholder="Abstract..." name="thesis[abstract]"><%= @thesis.abstract %></textarea>
   </div>
   
+  <div class="documentations-list">
+    <h4>Documentations:</h4>
+    <ul class="zebra">
+      <% (@thesis.documentations || []).each  do |documentation| %>
+      <li class="documentation" data-id="<%= documentation.id %>" data-model="<%= documentation.to_json %>">
+        <span class="meta-links">
+          <button class="delete">Delete</button>
+        </span>
+
+          <label for="edit-file">File</label>
+          <% if documentation.media %>
+          <p>Current File: <a target="_blank" href="http://s3.amazonaws.com/itp_archive/documentation/<%= documentation.id %>/<%= documentation.media_file_name %>"><%= documentation.media_file_name %></a></p>
+          <% end %>
+          <input id="edit-file" type="file" name="documentations[<%= documentation.id %>][media]"/>
+          <span class="description">Choose a new or replacement file.</span>
+
+          <label for="edit-text">Text:</label>
+          <textarea name="documentations[<%= documentation.id %>][paper]" id="edit-text" rows="10"><%= documentation.paper %></textarea>
+
+          <div class="field">
+            <label>Integrity:</label>
+            <select name="documentations[<%= documentation.id %>][integrity]">
+              <option <%= "selected" if documentation.integrity == 0 %> value="0">Unevaluated</option>
+              <option <%= "selected" if documentation.integrity == 1 %> value="1">Unacceptable</option>
+              <option <%= "selected" if documentation.integrity == 2 %> value="2">Fragment</option>
+              <option <%= "selected" if documentation.integrity == 3 %> value="3">Great</option>
+            </select>
+            <p class="description">What is the state of the text file compared to the PDF?</p>
+          </div>
+
+          <div class="field">
+            <label>Flagged?:</label>
+            <select name="documentations[<%= documentation.id %>][flag]">
+              <option value="false">Unflagged</option>
+              <option <%= "selected" if documentation.flag == true %> value="true">Flagged</option>
+            </select>
+            <p class="description">Does the PDF need to be edited?</p>
+          </div>
+
+          <div class="field">
+          <label><input type="checkbox" name="documentations[<%= documentation.id %>][has_images]" value="1"> Has Images?</label>
+          </div>
+
+          <div class="field">
+          <label>Physical Location: <input <%= "value='#{documentation.physical_location}'" if documentation.physical_location %> type="text" name="documentations[<%= documentation.id %>][physical_location]"> <span class="description">Where is this stored? Is it in a box? Where is the box?</span></label>
+          </div>
+
+          <div class="field">
+          <label>Medium: <input <input <%= "value='#{documentation.medium}'" if documentation.medium %> type="text" name="documentations[<%= documentation.id %>][medium]"> <span class="description">Paper, CDROM, Diskette, etc.</span></label>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+    <button class="green" id="add-documentation">Add A Document</button>
+  </div>
+
   <div class="actions align-center">
     <button class="submit">Save Thesis</button>
   </div>

@@ -68,6 +68,13 @@ class ThesesController < ApplicationController
   def update
     @thesis = Thesis.find(params[:id])
 
+    # raise ENV['S3_ACCESS_KEY'].inspect
+
+    @thesis.documentations.each do |documentation|
+      documentation.update_attributes params[:documentations][documentation.id.to_s]
+      # raise documentation.inspect
+    end
+
     @thesis.person.update_attributes(params[:person])
 
     respond_to do |format|
