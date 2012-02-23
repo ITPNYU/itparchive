@@ -19,16 +19,15 @@
 
   <% (@thesis.documentations || []).each do |documentation|%>
 
+<h5>
   <span class="title"><%= documentation %></span>
   <span class="description"><%= documentation.type %></span>
 
   <%= "<span class='negative pictos'>^</span>".html_safe if documentation.flag %>
   <%= "<span class='pictos' title='has images'>P</span>".html_safe if documentation.has_images %>
   <%# = read_status documentation.readers, documentation %>
-  
-  <p class="align-center">
-    <%= documentation.link_to_pdf("View PDF")%>
-  </p>
+  <%= documentation.link_to_pdf("View PDF")%>
+</h5>
   <%= markdown documentation.paper if documentation.paper %>
   <% end %>
 

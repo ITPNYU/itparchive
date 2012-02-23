@@ -41,55 +41,113 @@
           <button class="delete">Delete</button>
         </span>
 
+        <div class="field">
+          <label>Title <input type="text" name="documentations[<%= documentation.id %>][title]" <%= "value='#{documentation.title}'" %>></label>
+        </div>
+
+        <div class="field">
           <label for="edit-file">File</label>
           <% if documentation.media %>
           <p>Current File: <a target="_blank" href="http://s3.amazonaws.com/itp_archive/documentation/<%= documentation.id %>/<%= documentation.media_file_name %>"><%= documentation.media_file_name %></a></p>
           <% end %>
           <input id="edit-file" type="file" name="documentations[<%= documentation.id %>][media]"/>
-          <span class="description">Choose a new or replacement file.</span>
+          <span class="description">Choose a replacement file.</span>
+        </div>
 
           <label for="edit-text">Text:</label>
           <textarea name="documentations[<%= documentation.id %>][paper]" id="edit-text" rows="10"><%= documentation.paper %></textarea>
 
-          <div class="field">
-            <label>Integrity:</label>
-            <select name="documentations[<%= documentation.id %>][integrity]">
-              <option <%= "selected" if documentation.integrity == 0 %> value="0">Unevaluated</option>
-              <option <%= "selected" if documentation.integrity == 1 %> value="1">Unacceptable</option>
-              <option <%= "selected" if documentation.integrity == 2 %> value="2">Fragment</option>
-              <option <%= "selected" if documentation.integrity == 3 %> value="3">Great</option>
-            </select>
-            <p class="description">What is the state of the text file compared to the PDF?</p>
-          </div>
+        <div class="field">
+          <label>Integrity:</label>
+          <select name="documentations[<%= documentation.id %>][integrity]">
+            <option <%= "selected" if documentation.integrity == 0 %> value="0">Unevaluated</option>
+            <option <%= "selected" if documentation.integrity == 1 %> value="1">Unacceptable</option>
+            <option <%= "selected" if documentation.integrity == 2 %> value="2">Fragment</option>
+            <option <%= "selected" if documentation.integrity == 3 %> value="3">Great</option>
+          </select>
+          <p class="description">What is the state of the text file compared to the PDF?</p>
+        </div>
 
-          <div class="field">
-            <label>Flagged?:</label>
-            <select name="documentations[<%= documentation.id %>][flag]">
-              <option value="false">Unflagged</option>
-              <option <%= "selected" if documentation.flag == true %> value="true">Flagged</option>
-            </select>
-            <p class="description">Does the PDF need to be edited?</p>
-          </div>
+        <div class="field">
+          <label>Flagged?:</label>
+          <select name="documentations[<%= documentation.id %>][flag]">
+            <option value="false">Unflagged</option>
+            <option <%= "selected" if documentation.flag == true %> value="true">Flagged</option>
+          </select>
+          <p class="description">Does the PDF need to be edited?</p>
+        </div>
 
-          <div class="field">
-          <label><input type="checkbox" name="documentations[<%= documentation.id %>][has_images]" value="1"> Has Images?</label>
-          </div>
+        <div class="field">
+        <label><input type="checkbox" name="documentations[<%= documentation.id %>][has_images]" value="1"> Has Images?</label>
+        </div>
 
-          <div class="field">
-          <label>Physical Location: <input <%= "value='#{documentation.physical_location}'" if documentation.physical_location %> type="text" name="documentations[<%= documentation.id %>][physical_location]"> <span class="description">Where is this stored? Is it in a box? Where is the box?</span></label>
-          </div>
+        <div class="field">
+        <label>Physical Location: <input <%= "value='#{documentation.physical_location}'" if documentation.physical_location %> type="text" name="documentations[<%= documentation.id %>][physical_location]"> <span class="description">Where is this stored? Is it in a box? Where is the box?</span></label>
+        </div>
 
-          <div class="field">
-          <label>Medium: <input <input <%= "value='#{documentation.medium}'" if documentation.medium %> type="text" name="documentations[<%= documentation.id %>][medium]"> <span class="description">Paper, CDROM, Diskette, etc.</span></label>
-          </div>
-        </li>
+        <div class="field">
+        <label>Medium: <input <input <%= "value='#{documentation.medium}'" if documentation.medium %> type="text" name="documentations[<%= documentation.id %>][medium]"> <span class="description">Paper, CDROM, Diskette, etc.</span></label>
+        </div>
+      </li>
       <% end %>
     </ul>
-
-    <button class="green" id="add-documentation">Add A Document</button>
+    <button class="green" id="new-documentation-form-button"><span class="pictos">+</span> Add A Document</button>
   </div>
 
   <div class="actions align-center">
     <button class="submit">Save Thesis</button>
   </div>
 <% end %>
+
+<script type="text/template" id="new-documentation-form">
+<li>
+<span class="meta-links">
+  <button class="delete">Delete</button>
+</span>
+
+<div class="field">
+  <label>Title <input type="text" name="new_documentation[title]"></label>
+</div>
+
+<div class="field">
+  <label for="edit-file">File</label>
+  <input id="edit-file" type="file" name="new_documentation[media]"/>
+  <span class="description">Choose a file.</span>
+</div>
+
+  <label for="edit-text">Text:</label>
+  <textarea name="new_documentation[paper]" id="edit-text" rows="10"></textarea>
+
+<div class="field">
+  <label>Integrity:</label>
+  <select name="new_documentation[integrity]">
+    <option value="0">Unevaluated</option>
+    <option value="1">Unacceptable</option>
+    <option value="2">Fragment</option>
+    <option value="3">Great</option>
+  </select>
+  <p class="description">What is the state of the text file compared to the PDF?</p>
+</div>
+
+<div class="field">
+  <label>Flagged?:</label>
+  <select name="new_documentation[flag]">
+    <option value="false">Unflagged</option>
+    <option value="true">Flagged</option>
+  </select>
+  <p class="description">Does the PDF need to be edited?</p>
+</div>
+
+<div class="field">
+<label><input type="checkbox" name="new_documentation[has_images]" value="1"> Has Images?</label>
+</div>
+
+<div class="field">
+<label>Physical Location: <input type="text" name="new_documentation[physical_location]"> <span class="description">Where is this stored? Is it in a box? Where is the box?</span></label>
+</div>
+
+<div class="field">
+<label>Medium: <input type="text" name="new_documentation[medium]"> <span class="description">Paper, CDROM, Diskette, etc.</span></label>
+</div>
+</li>  
+</script>

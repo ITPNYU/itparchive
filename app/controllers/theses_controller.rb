@@ -52,6 +52,10 @@ class ThesesController < ApplicationController
     # to be different people.
     @thesis.person = Person.new(params[:person])
 
+    if params[:new_documentation]
+      @thesis.documentations << Documentation.new(params[:new_documentation])
+    end
+
     respond_to do |format|
       if @thesis.save
         format.html { redirect_to @thesis, notice: 'Thesis was successfully created.' }
@@ -72,7 +76,10 @@ class ThesesController < ApplicationController
 
     @thesis.documentations.each do |documentation|
       documentation.update_attributes params[:documentations][documentation.id.to_s]
-      # raise documentation.inspect
+    end
+
+    if params[:new_documentation]
+      @thesis.documentations << Documentation.new(params[:new_documentation])
     end
 
     @thesis.person.update_attributes(params[:person])

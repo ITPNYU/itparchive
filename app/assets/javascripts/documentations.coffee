@@ -36,6 +36,11 @@ jQuery ->
       })
     return false
 
+  $('#new-documentation-form-button').click ->
+    $('.documentations-list ul').append(Mustache.render($('#new-documentation-form').html(), "{}"))
+    $(this).remove()
+    return false
+
   $('button.delete').click ->
     if confirm "Delete Documentation!\n Are you sure? All files will be immediately deleted. This cannot be undone."
       deleteDocumentation $(this).closest('.documentation')
