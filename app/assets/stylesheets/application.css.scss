@@ -23,7 +23,6 @@ $link: rgba(17,114,228,1);
 @import "reset";
 @import "mixins";
 @import "modular-scale";
-@import "zindex";
 @import "form";
 
 html {
@@ -127,9 +126,6 @@ header {
   box-shadow: 0 0 8px rgba(51,51,51,0.6);
   overflow-y: auto;}
 
-.required {
-  color: $red;}
-
 #notice {
   width: 400px;
   margin: 0 auto;
@@ -141,17 +137,8 @@ header {
   .alert {
     background-color: red;}}
 
-.zebra>*:nth-child(2n) {
-  background-color: transparentize($slate,0.8);
-}
-
-.delete-note {
-  cursor: pointer;
-}
-
-@import "favorites";
+@import "classes";
 @import "theses";
-@import "home";
 
 .pictos {
   font-family: Pictos;

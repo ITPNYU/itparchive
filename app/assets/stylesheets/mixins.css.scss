@@ -26,31 +26,3 @@
   @include rounded-corner(1px);
   outline-color: rgb(170,170,170);
 }
-
-.align-center {
-	text-align: center;
-}
-
-.align-left {
-	text-align: left;
-}
-
-.align-right {
-	text-align: right;
-}
-
-.float-left {
-  float: left;
-}
-
-.float-right {
-  float: right;
-}
-
-.positive {
-	color: $green;
-}
-
-.negative {
-	color: $red;
-}

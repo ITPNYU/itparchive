@@ -1,9 +1,15 @@
 button {
   background-color: rgb(26,96,178);
   border: 1px solid rgb(26,69,127);
+  
+  &.green {
+    background-color: rgb(48, 178, 26);
+    border: 1px solid rgb(13, 89, 5);
+  }
+  
   cursor: pointer;
   @include rounded-corner;
-  -webkit-box-shadow: inset 0 0 2px rgba(255,255,255,0.3);
+  -webkit-box-shadow: inset 0 0 2px rgba(255,255,255,0.4);
   -webkit-text-shadow: 0 1px 0 rgb(128,128,128);
   color: rgb(255,255,255);
   font-size: 1.309em;
@@ -11,6 +17,10 @@ button {
     
   &:hover {
     background-color: rgb(20,90,165);
+  }
+  
+  &.green:hover {
+    background-color: rgb(13, 89, 5);
   }
 }
 

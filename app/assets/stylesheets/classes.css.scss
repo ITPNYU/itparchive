@@ -1,0 +1,127 @@
+// LAYOUT
+//______________________________________________________
+
+
+// TYPE
+//______________________________________________________
+
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+// COLORS
+//_______________________________________________________
+.positive {
+	color: $green;
+}
+
+.required,
+.negative {
+  color: $red;
+}
+
+.zebra>*:nth-child(2n) {
+  background-color: transparentize($slate,0.8);
+}
+
+// DISPLAY
+//______________________________________________________
+.delete-note {
+  cursor: pointer;
+}
+
+.meta-links {
+  // Meta-links live inside of their associated model
+  // Only display these links if the mouse is hovering
+  // on the model.
+  color: $orange;
+  font-size: 0.9em;
+  visibility: hidden;
+
+  &.visible {
+	  visibility: visible;
+  }
+
+  a {
+    color: $orange;
+  }
+
+  a.delete {
+    color: $red;
+  }
+}
+
+*:hover>.meta-links {
+  visibility: visible;
+}
+
+
+// MODEL SPECIFIC STYLES
+// Styles used for specific models, used in one place.
+//______________________________________________________
+
+// Favorites
+.favorite-star {
+  color: $slate;
+  padding: 0.25em;
+  position: relative;
+  text-decoration: none;
+
+  .favorites-list {
+    display: none;
+  }
+
+  &:hover {
+    color: $orange;
+  }
+}
+
+.has-favorites {
+  text-decoration: none;
+  color: $orange;
+  &:hover {
+    background-color: $slate;
+    color: $link;
+
+    .favorites-list {
+      color: $font-base;
+      background-color: $slate;
+      display: block;
+      padding: 0.25em;
+      position: absolute;
+      @extend .z2;
+    }
+  }
+}
+
+// Home
+.dashboard-widget {
+  margin: 1em 0;
+  float: left;
+  width: 48%;
+  padding-right: 1%;
+  position: relative;
+
+  &>div{
+    padding: 0.25em;
+    &:nth-child(even){
+      background: transparentize($slate, 0.8);
+    }
+  }
+}

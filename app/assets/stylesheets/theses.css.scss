@@ -74,29 +74,6 @@
   }
 }
 
-
-*:hover>.meta-links {
-  visibility: visible;
-}
-
-.meta-links {
-  color: $orange;
-  font-size: 0.9em;
-  visibility: hidden;
-
-  &.visible {
-	  visibility: visible;
-  }
-
-  a {
-    color: $orange;
-  }
-
-  a.delete {
-    color: $red;
-  }
-}
-
 #content {
 	header {
 		background: none;
