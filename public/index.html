@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Itparchive</title>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
+  <link href="http://sklise.s3.amazonaws.com/pictos/pictos.css" rel="stylesheet" type="text/css"></link>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1><a href="/">ITP Archive</a></h1>
+
+      <div id="user-nav">
+        <a href="/users/login">Sign In</a>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="/theses">Theses</a></li>
+          <li><a href="http://blog.itparchive.com">Blog</a></li>
+          <li><a href="http://twitter.com/itparchive">Twitter</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="content">
+      <h1>Welcome to the ITP Thesis Archive</h1>
+
+      <p>
+        The ITP Thesis Archive began during the summer of 2011 as a means of preserving, exploring and sharing the history of student work made at ITP since its founding in 1979. Thanks to the hard work of an entirely student led team, over 1200 papers hidden in closets for years are now digitized. Using thesis projects as source material, the Archive team strives to make a visual, dynamic, and collaborative space for our community to examine how we've made work over the last 30+ years.
+      </p> 
+
+      <p><span id="contact-replace"></span></p>
+      <script>
+        // These two lines dynamically place the itparchive email address inside
+        // the span with id="contact-replace"
+        // Why? Spam protection. Since the email address is not assembled in the
+        // html most every spam bot won't find it.
+        var m=['itparchive','@','gmail','com']
+        $('#contact-replace').html('<a href="mail'+'to:'+m[0]+m[1]+m[2]+'.'+m[3]+'">'+m[0]+m[1]+m[2]+'.'+m[3]+'</a>');
+      </script>
+
+    </div>
+  </div>
+</body>
+</html>
