@@ -1,5 +1,6 @@
 <header>
   <h3><%= @thesis.person.full_name if @thesis.person %></h3>
+  <p><%= @thesis.person.bio %></p>
   <h2><%= @thesis.title %></h2>
   <h4><%= @thesis.year %></h4>
   <h4><%= star @thesis.favoritors, @thesis if user_signed_in? %></h4>

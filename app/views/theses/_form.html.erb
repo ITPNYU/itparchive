@@ -15,6 +15,7 @@
     <h3>
       <input placeholder="First Name" type="text" name="person[first]" <%= edit_value(@thesis.person,'first') %>/>
       <input placeholder="Last Name" type="text" name="person[last]" <%= edit_value(@thesis.person,'last') %>>
+      <textarea placeholder="Author Bio..." name="person[bio]"><%= @thesis.person.bio if @thesis.person %></textarea>
     </h3>
 
     <h2>
