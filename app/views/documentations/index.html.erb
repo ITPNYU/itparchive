@@ -10,10 +10,7 @@
   <% @documentations.each do |documentation| %>
     <tr>
       <td class="orphaned-documentation">
-        <span class="file-name" style="width: 100%;display:inline-block"><%= documentation.media.path.split("/").last %></span>
-        <div class="add-thesis-form" data-documentationID="<%= documentation.id %>">
-          <%= render 'form', :doc => documentation %>
-        </div>
+        <%= link_to documentation, "#{documentation.thesis}" %> <%= documentation.thesis.person.first %> <%=documentation.thesis.person.last%>
       </td>
     </tr>
   <% end %>
