@@ -83,7 +83,7 @@
         </div>
 
         <div class="field">
-        <label>Physical Location: <input <%= "value='#{documentation.physical_location}'" if documentation.physical_location %> type="text" name="documentations[<%= documentation.id %>][physical_location]"> <span class="description">Where is this stored? Is it in a box? Where is the box?</span></label>
+          <label>Notes on Documentation: <textarea name="documentations[<%= documentation.id %>][notation]"> <%= documentation.notation if documentation.notation %></textarea> <span class="description">Where is this stored? What is wrong with it?</span></label>
         </div>
 
         <div class="field">
@@ -144,7 +144,7 @@
 </div>
 
 <div class="field">
-<label>Physical Location: <input type="text" name="new_documentation[physical_location]"> <span class="description">Where is this stored? Is it in a box? Where is the box?</span></label>
+<label>Notes on Documentation: <textarea name="new_documentation[notes]"></textarea> <span class="description">Where is this stored? What is wrong with it?</span></label>
 </div>
 
 <div class="field">

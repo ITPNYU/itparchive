@@ -11,25 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229211725) do
+ActiveRecord::Schema.define(:version => 20120229214604) do
 
   create_table "documentations", :force => true do |t|
-    t.string    "type"
-    t.integer   "condition"
-    t.integer   "thesis_id"
-    t.string    "title"
-    t.text      "paper"
-    t.string    "media_file_name"
-    t.string    "media_content_type"
-    t.integer   "media_file_size"
-    t.timestamp "media_updated_at"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "integrity"
-    t.boolean   "flag"
-    t.string    "physical_location"
-    t.boolean   "has_images"
-    t.string    "medium"
+    t.string   "type"
+    t.integer  "condition"
+    t.integer  "thesis_id"
+    t.string   "title"
+    t.text     "paper"
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "integrity"
+    t.boolean  "flag"
+    t.text     "notation",           :limit => 255
+    t.boolean  "has_images"
+    t.string   "medium"
   end
 
   create_table "favorites", :force => true do |t|

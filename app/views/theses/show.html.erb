@@ -29,6 +29,7 @@
   <%= documentation.link_to_pdf("View PDF")%>
 </h5>
   <%= reads_list(documentation, current_user) if user_signed_in? %>
+  <p class="description negative"><%= documentation.notation if(user_signed_in? && documentation.notation) %></p>
 
   <%= markdown documentation.paper if documentation.paper %>
   <% end %>
