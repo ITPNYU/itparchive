@@ -14,7 +14,7 @@ Itparchive::Application.routes.draw do
     end
   end
 
-  resources :people, :documentations, :favorites
+  resources :people, :documentations, :favorites, :reads
 
 
   # The priority is based upon order of creation:
