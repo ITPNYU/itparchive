@@ -43,6 +43,7 @@
     <% @thesis.notes.each do |note| %>
     <% if note.public || user_signed_in? %>
     <li data-id="<%= note.id %>">
+      <div class="description"><%= note.created_at.to_formatted_s(:long) %></div>
       <h6><%= note.user %></h6>
       <div>
         <%= markdown note.body %>

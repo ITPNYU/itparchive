@@ -69,11 +69,15 @@
             // Tumblr has different types of posts with different attributes.
             // We want to give everything a Title and a Body.
             if(post["type"] == "regular") {
-              post["title"] = post["regular-title"];
+              post["title"] = '<a href="' + post["url-with-slug"] + '" target="_blank">' + post["regular-title"] + '</a>';
               post["body"] = post["regular-body"]
             }
             if(post["type"] == "photo") {
               post["body"] = '<img src="' + post["photo-url-500"] + '">';
+            }
+            if(post["type"] == "link") {
+              post["title"] = '<a href="' + post["link-url"] + '">' + post["link-text"] + '</a> <span class="pictos">j</span>';
+              post["body"] = post["link-description"];
             }
             // This line finds the <div id="tumblr"></div> and adds the post to the end.
             // We rendering the post as a template with the help of Mustache.
@@ -91,8 +95,8 @@
       <script type="text/template" id="post-template">
         <div class="post">
           <div class="description">{{ time }}</div>
-          <h4><a href="{{url-with-slug}}" target="_blank">{{title}}</a></h4>
-          <div>{{&body}}</div>
+          <h4>{{& title }}</h4>
+          <div>{{& body }}</div>
           <p><a href="{{url-with-slug}}" target="_blank">Read More</a></p>
         </div>
       </script>
