@@ -6,6 +6,8 @@
   <link href='http://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
   <link href="http://sklise.s3.amazonaws.com/pictos/pictos.css" rel="stylesheet" type="text/css"></link>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://raw.github.com/documentcloud/underscore/master/underscore-min.js"></script>
+  <script src="/mustache.js"></script>
   <link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -33,6 +35,11 @@
       </p> 
 
       <p><span id="contact-replace"></span></p>
+      
+      <div id="tumblr">
+        <h3>Development Blog</h3>
+      </div>
+      
       <script>
         // These two lines dynamically place the itparchive email address inside
         // the span with id="contact-replace"
@@ -40,6 +47,50 @@
         // html most every spam bot won't find it.
         var m=['itparchive','@','gmail','com']
         $('#contact-replace').html('<a href="mail'+'to:'+m[0]+m[1]+m[2]+'.'+m[3]+'">'+m[0]+m[1]+m[2]+'.'+m[3]+'</a>');
+        
+        // And this here embeds the Tumblr
+        
+        // First we call $.getJSON to retrieve the latest posts as JSON
+        $.getJSON('http://blog.itparchive.com/api/read/json?callback=?', function(data) {
+          // The request returns a `data` object which has the attribute `posts` which is
+          // an array of post elements. Here we iterate through all of data.posts.
+          // this function _.each() takes 2 arguments, the first is the thing to iterate
+          // The second is a function for what to do with each element. And by calling 
+          // "post" as an argument to function(){} this refers to the individual post
+          // from data.posts, think of it like posts[i] in a Processing for loop.
+          _.each(data.posts, function(post) {
+            // This line prints the post object to the Developer console in the browser.
+            console.log(post)
+            // Now we are doing some detection to see what type of post we have.
+            // Tumblr has different types of posts with different attributes.
+            // We want to give everything a Title and a Body.
+            if(post["type"] == "regular") {
+              post["title"] = post["regular-title"];
+              post["body"] = post["regular-body"]
+            }
+            if(post["type"] == "photo") {
+              post["body"] = '<img src="' + post["photo-url-500"] + '">';
+            }
+            // This line finds the <div id="tumblr"></div> and adds the post to the end.
+            // We rendering the post as a template with the help of Mustache.
+            // The two arguments for Mustache.render() are the template we want to use
+            // and the object whose variables we want to insert into the template.
+            // If you look below there is a script tag with the template in it.
+            // Any words inside of mustaches {{ }} are variables that correspond
+            // to attributes of post. So when you see {{ data }} that means put the 
+            // value of post["date"] in this spot.
+            $('#tumblr').append(Mustache.render($('#post-template').html(), post));
+          });
+        });
+      </script>
+      
+      <script type="text/template" id="post-template">
+        <div class="tumblr-post">
+          <div class="description">{{ date }}</div>
+          <h4><a href="{{url-with-slug}}" target="_blank">{{title}}</a></h4>
+          <div>{{&body}}</div>
+          <p><a href="{{url-with-slug}}" target="_blank">Read More</a></p>
+        </div>
       </script>
 
     </div>
