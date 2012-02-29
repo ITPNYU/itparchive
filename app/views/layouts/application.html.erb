@@ -30,6 +30,7 @@
           <li><%= link_to "Favorites", favorites_path %></li>
           <% if user_signed_in? %>
             <li><%= link_to "Dashboard", '/dashboard'%></li>
+            <li><%= link_to "Notes", '/notes' %></li>
           <% end %>
         </ul>
       </nav>

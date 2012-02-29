@@ -8,13 +8,7 @@ Itparchive::Application.routes.draw do
     resources :people
   end
 
-  resources :notes do
-    collection do
-      get :recent
-    end
-  end
-
-  resources :people, :documentations, :favorites, :reads
+  resources :people, :documentations, :favorites, :reads, :notes
 
 
   # The priority is based upon order of creation:
