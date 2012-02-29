@@ -6,7 +6,6 @@
   <thead>
     <th>Author</th>
     <th><span class='star'>★</span></th>
-    <th>Read?</th>
     <th>Title</th>
     <th>Year</th>
     <th>PDF</th>
@@ -18,9 +17,6 @@
     <td><%= thesis.person.full_name if thesis.person %></td>
     <td class="align-center">
       <%= star thesis.favoritors, thesis if user_signed_in? %>
-    </td>
-    <td class="align-center">
-      <%= thesis.read_status %>
     </td>
     <td>
       <% if thesis.title %>
