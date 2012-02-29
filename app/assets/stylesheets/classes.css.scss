@@ -80,6 +80,10 @@
   background-color: transparentize($slate,0.8);
 }
 
+.yellow {
+  color: $yellow;
+}
+
 // DISPLAY
 //______________________________________________________
 .delete-note {
@@ -186,5 +190,13 @@
     &:nth-child(even){
       background: transparentize($slate, 0.8);
     }
+  }
+}
+
+// Reads
+.reads-list {
+  li {
+    display: inline-block;
+    margin: 0 1em 0 0;
   }
 }

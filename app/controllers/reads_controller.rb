@@ -18,10 +18,7 @@ class ReadsController < ApplicationController
   def destroy
     @read = Read.find(params[:id])
     @read.destroy
-    respond_to do |format|
-      format.html { redirect_to reads_url }
-      format.json { head :ok }
-    end
+    render json: { succes: 'ok' }
   end
 
 end

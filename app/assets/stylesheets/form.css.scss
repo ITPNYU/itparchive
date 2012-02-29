@@ -7,6 +7,11 @@ button {
     border: 1px solid rgb(13, 89, 5);
   }
   
+  &.red {
+    background-color: $red;
+    border: 1px solid darken($red, 5%);
+  }
+  
   cursor: pointer;
   @include rounded-corner;
   -webkit-box-shadow: inset 0 0 2px rgba(255,255,255,0.4);
@@ -21,6 +26,10 @@ button {
   
   &.green:hover {
     background-color: rgb(13, 89, 5);
+  }
+  
+  &.red:hover {
+    background-color: darken($red,10%);
   }
 }
 
