@@ -3,7 +3,7 @@ class DocumentationsController < ApplicationController
   # caches_action :index
 
   def index
-    @documentations = Documentation.where(:thesis_id => nil)
+    @documentations = Documentation.where(:id => [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 30, 31, 32, 289, 326, 339, 531, 591, 609, 776])
   end
 
   def edit
