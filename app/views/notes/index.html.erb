@@ -3,7 +3,7 @@
 <% @notes.each do |note| %>
   <div style="margin:1em 0 2em;border-bottom:1px solid rgba(0,0,0,0.4);padding: 1em 0;">
     <div class="description"><%= note.created_at.to_formatted_s(:long) %></div>
-    <h4><%= note.notable %></h4>
+    <h4><%= link_to note.notable, thesis_path(note.notable) %></h4>
     
     <div><%= note.body %></div>
     

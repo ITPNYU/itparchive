@@ -38,6 +38,8 @@
       
       <div id="tumblr">
         <h3>Development Blog</h3>
+        
+        <p class='description'>Snippets from recent posts on our <a href="http://blog.itparchive.com">blog</a>.</p>
       </div>
       
       <script>
@@ -61,6 +63,8 @@
           _.each(data.posts, function(post) {
             // This line prints the post object to the Developer console in the browser.
             console.log(post)
+            date = new Date(post["date"])
+            post["time"] = (date.getMonth()+1) + "/" + date.getDay() + "/" + date.getFullYear()
             // Now we are doing some detection to see what type of post we have.
             // Tumblr has different types of posts with different attributes.
             // We want to give everything a Title and a Body.
@@ -85,8 +89,8 @@
       </script>
       
       <script type="text/template" id="post-template">
-        <div class="tumblr-post">
-          <div class="description">{{ date }}</div>
+        <div class="post">
+          <div class="description">{{ time }}</div>
           <h4><a href="{{url-with-slug}}" target="_blank">{{title}}</a></h4>
           <div>{{&body}}</div>
           <p><a href="{{url-with-slug}}" target="_blank">Read More</a></p>
