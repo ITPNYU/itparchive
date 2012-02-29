@@ -10,7 +10,7 @@
   <% @documentations.each do |documentation| %>
     <tr>
       <td class="orphaned-documentation">
-        <%= link_to documentation, "#{documentation.thesis}" %> <%= documentation.thesis.person.first %> <%=documentation.thesis.person.last%>
+        <%= link_to "#{documentation.thesis}", thesis_path(documentation.thesis) %> <%= documentation.thesis.person.first %> <%=documentation.thesis.person.last%>
       </td>
     </tr>
   <% end %>
