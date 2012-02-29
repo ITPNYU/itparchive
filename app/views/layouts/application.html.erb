@@ -12,7 +12,7 @@
 <body>
   <div id="wrapper">
     <header>
-      <h1><a href="/">ITP Archive</a></h1>
+      <h1><a href="<%= user_signed_in? ? "/dashboard" : "/" %>">ITP Archive</a></h1>
 
       <div id="user-nav">
         <% if user_signed_in? %>
