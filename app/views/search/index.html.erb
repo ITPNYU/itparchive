@@ -9,8 +9,13 @@
 
 <ul>
   <% for result in @results %>
-    <li>
-      <p>
+      <li>
+
+    <% if result.is_a? Documentation%>
+  
+      
+    
+    <p>
         <b>
           <a href="<%= thesis_url(result.thesis) %>"><%= result.thesis.title %></a>
         </b>
@@ -18,7 +23,27 @@
       <p>
         <em>by <%= result.thesis.person.full_name %></em>, <%= result.thesis.year %>
       </p>
-    </li>
+    <% end %>
+    <% if result.is_a? Person %>
+    <p>
+        <b>
+          [PERSON] <a href="<%= person_url(result) %>"><%= result.full_name %></a>
+        </b>
+      </p>
+    <% end %>
+    <% if result.is_a? Thesis %>
+    <p>
+        <b>
+          <a href="<%= thesis_url(result) %>"><%= result.title %></a>
+        </b>
+      </p>
+      <p>
+        <em>by <%= result.person.full_name %></em>, <%= result.year %>
+      </p>
+    <% end %>
+    
+        </li>
+
   <% end %>
 </ul>
 
