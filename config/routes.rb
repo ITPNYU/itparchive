@@ -9,6 +9,8 @@ Itparchive::Application.routes.draw do
   end
 
   resources :people, :documentations, :favorites, :reads, :notes
+  
+  resources :search, :only => [:index] 
 
 
   # The priority is based upon order of creation:

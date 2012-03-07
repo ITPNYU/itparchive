@@ -1,0 +1,25 @@
+
+<%= render :partial => "form", :locals => {:query => @query} %>
+
+<% if @query %>
+
+<h4>
+  <%= pluralize(@results.length, "thesis") %> found matching "<%= @query %>"
+</h4>
+
+<ul>
+  <% for result in @results %>
+    <li>
+      <p>
+        <b>
+          <a href="<%= thesis_url(result.thesis) %>"><%= result.thesis.title %></a>
+        </b>
+      </p>
+      <p>
+        <em>by <%= result.thesis.person.full_name %></em>, <%= result.thesis.year %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<% end %>
