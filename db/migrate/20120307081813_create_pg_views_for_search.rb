@@ -6,11 +6,15 @@ class CreatePgViewsForSearch < ActiveRecord::Migration
               CAST ('Thesis' AS varchar) AS searchable_type 
       FROM theses 
       UNION 
-      SELECT  documentations.id AS searchable_id, documentations.paper AS term, 
+      SELECT  documentations.id AS searchable_id, documentations.paper_excerpt AS term, 
               CAST ('Documentation' AS varchar) AS searchable_type 
       FROM documentations
       UNION 
       SELECT  people.id AS searchable_id, people.last AS term, 
+              CAST ('Person' AS varchar) AS searchable_type 
+      FROM people
+      UNION
+      SELECT  people.id AS searchable_id, people.first AS term, 
               CAST ('Person' AS varchar) AS searchable_type 
       FROM people
     SQL

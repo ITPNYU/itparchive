@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307071105) do
+ActiveRecord::Schema.define(:version => 20120307164153) do
 
   create_table "documentations", :force => true do |t|
     t.string   "type"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120307071105) do
     t.text     "notation"
     t.boolean  "has_images"
     t.string   "medium"
+    t.text     "paper_excerpt"
   end
 
   create_table "favorites", :force => true do |t|
