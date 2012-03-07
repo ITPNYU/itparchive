@@ -5,8 +5,7 @@ gem 'rails', '3.1.0'
 gem 'texticle', "2.0", :require => 'texticle/rails'
 
 group :development do
-  gem 'sqlite3'
-  gem 'pg'
+  gem 'pg'  
 end
 
 group :production do

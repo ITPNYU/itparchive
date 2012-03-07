@@ -1,5 +1,5 @@
 class DocumentationsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!#, :except => [:show]
   # caches_action :index
 
   def index
