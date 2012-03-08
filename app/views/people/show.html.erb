@@ -1,0 +1,11 @@
+<h2><%= @person.full_name %></h2>
+
+<h3>Thesis: <%= link_to @person.thesis.title, thesis_url(@person.thesis_id) %></h3>
+
+<p>Graduated in: <%= @person.year %></p>
+
+<div clas="bio">
+  <h3>Bio</h3>
+  
+  <%= markdown(@person.bio || "*No biography for #{@person.full_name}*") %>
+</div>
