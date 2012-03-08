@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rake'
-gem 'rails'
+gem 'rake', "0.8.7"
+gem 'rails', '3.1.0'
+gem 'texticle', "2.0", :require => 'texticle/rails'
 
 group :development do
   gem 'pg'  

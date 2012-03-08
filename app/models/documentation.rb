@@ -23,6 +23,9 @@ class Documentation < ActiveRecord::Base
 
   def default_values
     self.integrity = 0 unless self.integrity
+    if self.paper
+      self.paper_excerpt = self.paper.gsub(/\n|\r|\t/, ' ')[0..2000]
+    end
   end
 
   def condition_word
