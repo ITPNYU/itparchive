@@ -27,5 +27,6 @@ gem 'redcarpet', '< 2.0' # Markdown
 gem 'devise'
 
 # AWS Integration
+gem 'aws-sdk'
 gem 'aws-s3', :require => 'aws/s3'
 gem 'paperclip', '~> 2.4'
