@@ -1,10 +1,10 @@
-$type-base: 8px;
+$type-base: 10px 100px;
 $type-text: 13px;
 $type-alt: 10px;
 
 $line: 24;
 $column: 100% / 18;
-$em: $type-base * 1.2;
+$em: $type-base;
 $golden: 1.618;
 
 // COLORS
@@ -59,32 +59,37 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-  font-size: ms(4, $type-alt, $golden);
-  line-height: ms(4, $type-base, $golden);
+  font-size: ms(6, $type-base, $golden);
+  line-height: ms(6, $type-base, $golden);
   margin: 0.25em 0 0.75em;}
 
 h2 {
-  font-size: ms(4, $type-base, $golden);
+  font-size: ms(5, $type-base, $golden);
   line-height: ms(5, $type-base, $golden);
   margin: 0.25em 0 0.75em;}
 
 h3 {
-  font-size: ms(3, $type-base, $golden);
+  font-size: ms(4, $type-base, $golden);
   line-height: ms(4, $type-base, $golden);
-  margin: 0.35em;}
+  margin: 0.35em 0 0.5em;}
 
 h4 {
-  font-size: ms(2, $type-base, $golden);
+  font-size: ms(3, $type-base, $golden);
   line-height: ms(3, $type-base, $golden);
-  margin: 0.25em 0;}
+  margin: 0.25em 0;
+}
 
 h5 {
-  font-size: ms(2, $type-alt, $golden);
-  line-height: ms(3, $type-alt, $golden);}
+  font-size: ms(2, $type-base, $golden);
+  font-weight: bold;
+  line-height: ms(3, $type-base, $golden);
+  margin: 0.45em 0 0.5em;
+  text-transform: uppercase;
+}
 
 h6 {
-  font-size: ms(1, $type-alt, $golden);
-  line-height: ms(1, $type-alt, $golden);
+  font-size: ms(1, $type-base, $golden);
+  line-height: ms(1, $type-base, $golden);
 }
 
 em {
@@ -112,14 +117,34 @@ header {
   width: #{$column*16};
 
   h1 {
-    font-size: ms(1, $type-text, $golden);}
+    font-size: ms(1, $type-text, $golden);
+    line-height: ms(1, $type-text, $golden);
+  
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+  }
 
   #user-nav {
     @extend .float-right;}
 
-  nav {
-    ul li{
-      display: inline;}}}
+}
+
+nav {
+  ul li{
+    display: inline;
+    margin: 0 0.5em 0 0;
+  }
+
+  a {
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
 
 #content {
   background-color: $white;
