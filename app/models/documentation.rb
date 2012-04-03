@@ -1,6 +1,6 @@
 class Documentation < ActiveRecord::Base
 
-  belongs_to :thesis
+  belongs_to :thesis, :touch => true
   has_many :favorites, :as => :favoritable
   has_many :notes, :as => :notable
   has_many :reads, :as => :readable
