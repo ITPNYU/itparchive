@@ -50,6 +50,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
+    dalli (1.1.5)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -144,6 +145,7 @@ DEPENDENCIES
   aws-s3
   aws-sdk
   coffee-rails (~> 3.1.0)
+  dalli
   devise
   jquery-rails
   paperclip (~> 2.4)

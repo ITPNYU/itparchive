@@ -31,4 +31,7 @@ Itparchive::Application.configure do
   # Action Mailer Set Up for Devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # Allow caching to happen in development.
+  config.action_controller.perform_caching = true
+
 end
