@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   before_filter :authenticate_user!
+  cache_sweeper :favorite_sweeper
 
   def index
     @favorites = Favorite.all

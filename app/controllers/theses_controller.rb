@@ -1,11 +1,13 @@
 class ThesesController < ApplicationController
   before_filter :authenticate_user!#, :except => [:index, :show]
-  # caches_action :index
+  caches_action :index
+  caches_action :show
+  cache_sweeper :thesis_sweeper
 
   # GET /theses
   # GET /theses.json
   def index
-    @theses = Thesis.find(:all, :include => [:person, :favorites, :documentations])
+    @theses = Thesis.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb

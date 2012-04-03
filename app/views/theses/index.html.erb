@@ -12,30 +12,8 @@
     <th>Text?</th>
   </thead>
 
-<% @theses.each do |thesis| %>
-  <tr>
-    <td><%= thesis.person.full_name if thesis.person %></td>
-    <td class="align-center">
-      <%= star thesis.favoritors, thesis if user_signed_in? %>
-    </td>
-    <td>
-      <% if thesis.title %>
-      <%= link_to thesis.title, thesis %>
-      <% else %>
-      <%= link_to "<em>n/a</em>".html_safe, thesis %>
-      <% end %>
-      <span class="meta-links">
-        <%= link_to 'edit', edit_thesis_path(thesis) %>
-        <%= link_to 'delete', thesis, confirm: 'Are you sure?', method: :delete, :class => "delete" %>
-      </span>
-    </td>
-    <td><%= thesis.year %></td>
-    <td class="align-center">
-      <%= check_mark thesis.has_media? %>
-    </td>
-    <td class="align-center">
-      <%= check_mark thesis.has_text? %>
-    </td>
-  </tr>
-<% end %>
+  <tbody>
+    <%= render @theses %>
+  </tbody>
+
 </table>
