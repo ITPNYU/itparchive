@@ -54,8 +54,19 @@ class ThesesController < ApplicationController
     # to be different people.
     @thesis.person = Person.new(params[:person])
 
+    # raise params[:new_documentation][:media].tempfile.inspect
+
     if params[:new_documentation]
-      @thesis.documentations << Documentation.new(params[:new_documentation])
+      documentation = Article.new({
+        title: params[:new_documentation][:title],
+        paper: params[:new_documentation][:paper],
+        has_images: params[:new_documentation][:has_images],
+        flag: params[:new_documentation][:flag],
+        integrity: params[:new_documentation][:integrity],
+        media: params[:new_documentation][:media]
+      })
+      documentation.notes << Note.new(body: params[:new_documentation][:notes], user_id: current_user.id) if params[:new_documentation][:notes].length > 0
+      @thesis.documentations << documentation
     end
 
     respond_to do |format|
@@ -81,7 +92,16 @@ class ThesesController < ApplicationController
     end
 
     if params[:new_documentation]
-      @thesis.documentations << Documentation.new(params[:new_documentation])
+      documentation = Article.new({
+        title: params[:new_documentation][:title],
+        paper: params[:new_documentation][:paper],
+        has_images: params[:new_documentation][:has_images],
+        flag: params[:new_documentation][:flag],
+        integrity: params[:new_documentation][:integrity],
+        media: params[:new_documentation][:media]
+      })
+      documentation.notes << Note.new(body: params[:new_documentation][:notes], user_id: current_user.id) if params[:new_documentation][:notes].length > 0
+      @thesis.documentations << documentation
     end
 
     @thesis.person.update_attributes(params[:person])
